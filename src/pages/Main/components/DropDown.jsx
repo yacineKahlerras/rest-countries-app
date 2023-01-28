@@ -4,6 +4,8 @@ function DropDown() {
   const [activeDropDown, setActiveDropDown] = useState(false);
   const [regionIndex, setRegionIndex] = useState();
   const dropDownContent = ["Africa", "Americas", "Asia", "Europe", "Oceania"];
+  const dropDownText =
+    regionIndex !== null ? dropDownContent[regionIndex] : "Filter by region";
 
   function dropDownToggle() {
     setActiveDropDown((oldValue) => !oldValue);
@@ -25,9 +27,7 @@ function DropDown() {
         rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center drop-shadow-md justify-between"
         type="button"
       >
-        {regionIndex !== null
-          ? dropDownContent[regionIndex]
-          : "Filter by region"}
+        {dropDownText}
         <svg
           className="w-4 h-4 ml-2"
           aria-hidden="true"
