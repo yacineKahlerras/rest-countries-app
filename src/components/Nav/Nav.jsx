@@ -18,7 +18,7 @@ function Nav() {
           <img
             src={darkTheme ? sunIcon : moonIcon}
             alt="theme"
-            className="w-4 dark:w-5"
+            className="w-4 dark:w-5 dark:invert"
           />
           {darkTheme ? "Light" : "Dark"} Mode
         </button>

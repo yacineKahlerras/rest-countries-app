@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import Nav from "@/components/Nav";
+import Nav from "@/components/Nav/Nav";
 import DarkThemeContext from "./utils/contexts/DarkThemeContext";
 
 function App() {
-  const [darkTheme, setDarkTheme] = useState(false);
+  const [darkTheme, setDarkTheme] = useState(true);
 
   useEffect(() => {
     if (darkTheme) document.documentElement.classList.add("dark");
