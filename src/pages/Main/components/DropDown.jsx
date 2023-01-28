@@ -9,13 +9,12 @@ function DropDown() {
   }
 
   return (
-    <div>
+    <div className="max-w-[12rem] ">
       <button
         onClick={dropDownToggle}
         data-dropdown-toggle="dropdown"
-        className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none 
-        focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex 
-        items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+        className="w-full text-VeryDarkBlue dark:text-White bg-White dark:bg-DarkBlue
+        rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center drop-shadow-md justify-between"
         type="button"
       >
         Filter by region
@@ -38,7 +37,8 @@ function DropDown() {
 
       <div
         ref={dropDownRef}
-        className="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700"
+        className="z-10 hidden bg-White divide-y divide-gray-100 rounded-lg shadow 
+        dark:bg-DarkBlue relative top-1"
       >
         <ul
           className="py-2 text-sm text-gray-700 dark:text-gray-200"
@@ -47,7 +47,11 @@ function DropDown() {
           {dropDownContent.map((dropText, index) => {
             return (
               <li key={index}>
-                <button className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                <button
+                  className="text-left px-5 py-2 hover:bg-DarkGray hover:bg-opacity-10 
+                  dark:hover:bg-gray-100 dark:hover:bg-opacity-20 dark:hover:bg-DarkGray cursor-pointer 
+                  w-full transition-all"
+                >
                   {dropText}
                 </button>
               </li>
