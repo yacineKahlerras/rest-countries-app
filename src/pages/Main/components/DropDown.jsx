@@ -1,11 +1,19 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 
 function DropDown() {
-  const dropDownRef = useRef();
+  const [activeDropDown, setActiveDropDown] = useState(false);
+  const [regionIndex, setRegionIndex] = useState();
   const dropDownContent = ["Africa", "Americas", "Asia", "Europe", "Oceania"];
 
   function dropDownToggle() {
-    dropDownRef.current.classList.toggle("hidden");
+    setActiveDropDown((oldValue) => !oldValue);
+  }
+
+  function regionFilter(index) {
+    setRegionIndex((oldValue) => {
+      return oldValue == index ? null : index;
+    });
+    setActiveDropDown((oldValue) => !oldValue);
   }
 
   return (
@@ -17,7 +25,9 @@ function DropDown() {
         rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center drop-shadow-md justify-between"
         type="button"
       >
-        Filter by region
+        {regionIndex !== null
+          ? dropDownContent[regionIndex]
+          : "Filter by region"}
         <svg
           className="w-4 h-4 ml-2"
           aria-hidden="true"
@@ -36,21 +46,26 @@ function DropDown() {
       </button>
 
       <div
-        ref={dropDownRef}
-        className="z-10 hidden bg-White divide-y divide-gray-100 rounded-lg shadow 
-        dark:bg-DarkBlue relative top-1"
+        className={`z-10 bg-White divide-y divide-gray-100 rounded-lg shadow 
+        dark:bg-DarkBlue relative top-1 ${activeDropDown ? "" : "hidden"}`}
       >
         <ul
           className="py-2 text-sm text-gray-700 dark:text-gray-200"
           aria-labelledby="dropdownDefaultButton"
         >
           {dropDownContent.map((dropText, index) => {
+            const activeStyle =
+              regionIndex == index
+                ? "bg-DarkGray bg-opacity-10 dark:bg-DarkGray dark:bg-opacity-20"
+                : "";
+
             return (
               <li key={index}>
                 <button
-                  className="text-left px-5 py-2 hover:bg-DarkGray hover:bg-opacity-10 
+                  onClick={() => regionFilter(index)}
+                  className={`text-left px-5 py-2 hover:bg-DarkGray hover:bg-opacity-10 
                   dark:hover:bg-gray-100 dark:hover:bg-opacity-20 dark:hover:bg-DarkGray cursor-pointer 
-                  w-full transition-all"
+                  w-full transition-all ${activeStyle}`}
                 >
                   {dropText}
                 </button>
