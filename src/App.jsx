@@ -6,7 +6,11 @@ function App() {
   const [darkTheme, setDarkTheme] = useState(false);
 
   return (
-    <main className="min-h-screen">
+    <main
+      className={`min-h-screen text-sm ${
+        darkTheme ? "bg-gray-900 text-white " : "bg-white text-black"
+      }`}
+    >
       <DarkThemeContext.Provider
         value={{ darkTheme: darkTheme, setDarkTheme: setDarkTheme }}
       >
