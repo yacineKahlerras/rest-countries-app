@@ -11,12 +11,16 @@ function Nav() {
   }
 
   return (
-    <nav>
+    <nav className="bg-White dark:bg-DarkBlue drop-shadow-md">
       <div className="flex justify-between items-center px-4 py-6">
         <h1>Where is the world ?</h1>
         <button onClick={toggleTheme} className="flex gap-3 items-center">
-          <img src={moonIcon} alt="theme" />
-          Dark Mode
+          <img
+            src={darkTheme ? sunIcon : moonIcon}
+            alt="theme"
+            className="w-4 dark:w-5"
+          />
+          {darkTheme ? "Light" : "Dark"} Mode
         </button>
       </div>
     </nav>
