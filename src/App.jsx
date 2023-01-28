@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Nav from "@/components/Nav/Nav";
 import DarkThemeContext from "./utils/contexts/DarkThemeContext";
+import { Outlet } from "react-router-dom";
 
 function App() {
   const [darkTheme, setDarkTheme] = useState(true);
@@ -16,6 +17,7 @@ function App() {
         value={{ darkTheme: darkTheme, setDarkTheme: setDarkTheme }}
       >
         <Nav />
+        <Outlet />
       </DarkThemeContext.Provider>
     </main>
   );
