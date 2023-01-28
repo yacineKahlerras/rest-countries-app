@@ -12,7 +12,7 @@ function App() {
   }, [darkTheme]);
 
   return (
-    <main className="min-h-screen text-sm bg-white dark:bg-VeryDarkBlue text-VeryDarkBlue dark:text-White">
+    <main className="min-h-screen text-sm bg-VeryLightGray dark:bg-VeryDarkBlue text-VeryDarkBlue dark:text-White">
       <DarkThemeContext.Provider
         value={{ darkTheme: darkTheme, setDarkTheme: setDarkTheme }}
       >

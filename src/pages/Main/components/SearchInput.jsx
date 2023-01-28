@@ -3,8 +3,8 @@ import React from "react";
 function SearchInput() {
   return (
     <div
-      className="flex items-center gap-3 p-3 px-5 w-full max-w-xs rounded-lg 
-      dark:bg-DarkBlue drop-shadow-l text-DarkGray dark:text-VeryLightGray"
+      className="flex items-center gap-3 p-3 px-5 w-full max-w-xs rounded-lg shadow-md
+      bg-White dark:bg-DarkBlue text-DarkGray dark:text-VeryLightGray mb-3"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
