@@ -1,11 +1,11 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 
 function DropDown() {
   const [activeDropDown, setActiveDropDown] = useState(false);
   const [regionIndex, setRegionIndex] = useState();
   const dropDownContent = ["Africa", "Americas", "Asia", "Europe", "Oceania"];
   const dropDownText =
-    regionIndex !== null ? dropDownContent[regionIndex] : "Filter by region";
+    regionIndex != null ? dropDownContent[regionIndex] : "Filter by region";
 
   function dropDownToggle() {
     setActiveDropDown((oldValue) => !oldValue);
