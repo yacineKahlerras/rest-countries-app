@@ -19,15 +19,20 @@ function CountryElement(props) {
   ];
 
   return (
-    <div>
+    <div
+      className="max-w-xs bg-White dark:bg-DarkBlue overflow-hidden rounded-md 
+    capitalize drop-shadow-xl shadow-DarkBlue"
+    >
       <img src={country.flags.svg} alt="country flag" />
-      <div>
-        <h2>{country.name.common}</h2>
+      <div className="p-6">
+        <h2 className="font-bold text-lg mb-3">{country.name.common}</h2>
         {infos.map((inf, infoIdx) => {
           return (
             <div key={infoIdx} className="flex gap-2">
-              <span>{inf.label} : </span>
-              <span>{inf.value}</span>
+              <span className="dark:text-White">{inf.label} : </span>
+              <span className="dark:text-VeryLightGray font-light">
+                {inf.value}
+              </span>
             </div>
           );
         })}

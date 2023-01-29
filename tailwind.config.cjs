@@ -3,7 +3,11 @@ module.exports = {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   darkMode: "class",
   theme: {
-    extend: {},
+    extend: {
+      gridTemplateColumns: {
+        countriesMap: "repeat( auto-fit, minmax(15.62rem, 20rem) )",
+      },
+    },
     colors: {
       DarkBlue: "hsl(209, 23%, 22%)" /*(Dark Mode Elements)*/,
       VeryDarkBlue: "hsl(207, 26%, 17%)" /*(Dark Mode Background)*/,
