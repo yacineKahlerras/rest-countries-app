@@ -5,6 +5,7 @@ import MainPage from "@/pages/Main/MainPage";
 import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ErrorPage from "./pages/error/ErrorPage";
+import CountryPage from "./pages/CountryPage/CountryPage";
 
 const router = createBrowserRouter([
   {
@@ -15,6 +16,11 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <MainPage />,
+      },
+      {
+        path: "/rest-countries-app/:countryName",
+        element: <CountryPage />,
+        errorElement: <ErrorPage />,
       },
     ],
   },
