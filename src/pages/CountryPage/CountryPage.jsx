@@ -33,6 +33,8 @@ export default function CountryPage() {
   ];
   const labels2 = ["top level domain", "currencies", "languages"];
 
+  console.log(country ? country.cca3 : "");
+
   function getCountryData() {
     for (let i = 0; i < countries.length; i++) {
       if (countries[i].name.common.toLowerCase() == countryName)
@@ -75,6 +77,11 @@ export default function CountryPage() {
               </div>
             );
           })}
+        </div>
+
+        {/* part 3  */}
+        <div>
+          <h2>border countries</h2>
         </div>
       </div>
     </div>
