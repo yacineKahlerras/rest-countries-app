@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import FilterDataContext from "@/utils/contexts/FilterDataContext";
+import React, { useContext, useState } from "react";
 
 function DropDown() {
+  const { regionIndex, setRegionIndex, dropDownContent } =
+    useContext(FilterDataContext);
   const [activeDropDown, setActiveDropDown] = useState(false);
-  const [regionIndex, setRegionIndex] = useState();
-  const dropDownContent = ["Africa", "Americas", "Asia", "Europe", "Oceania"];
   const dropDownText =
     regionIndex != null ? dropDownContent[regionIndex] : "Filter by region";
 
