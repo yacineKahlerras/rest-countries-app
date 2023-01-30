@@ -1,5 +1,5 @@
 import FilterDataContext from "@/utils/contexts/FilterDataContext";
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 
 function CountryElement(props) {
   const { country } = props;
