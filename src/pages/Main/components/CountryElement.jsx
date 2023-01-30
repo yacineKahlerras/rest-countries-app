@@ -4,7 +4,18 @@ import CountryName from "./CountryName";
 
 function CountryElement(props) {
   const { country } = props;
-  const { searchFilter } = useContext(FilterDataContext);
+  const { searchFilter, regionIndex, dropDownContent } =
+    useContext(FilterDataContext);
+  let isHidden = false;
+  const searchReg = new RegExp(searchFilter, "i");
+
+  if (regionIndex != null && country.region != dropDownContent[regionIndex]) {
+    isHidden = true;
+  }
+
+  if (searchFilter != "" && !searchReg.test(country.name.common)) {
+    isHidden = true;
+  }
 
   const infos = [
     {
@@ -23,8 +34,8 @@ function CountryElement(props) {
 
   return (
     <div
-      className="max-w-xs w-full bg-White dark:bg-DarkBlue overflow-hidden rounded-md 
-    capitalize drop-shadow-xl shadow-DarkBlue"
+      className={`max-w-xs w-full bg-White dark:bg-DarkBlue overflow-hidden rounded-md 
+    capitalize drop-shadow-xl shadow-DarkBlue ${isHidden ? "hidden" : ""}`}
     >
       <div className="h-[12rem] relative">
         <img
