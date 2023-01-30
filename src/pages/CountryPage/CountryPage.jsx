@@ -17,7 +17,7 @@ export default function CountryPage() {
         region: country.region,
         "sub region": country.subregion,
         capital: country.capital[0],
-        "top level domain": country.tld,
+        "top level domain": country.tld[0],
         currencies: country.currencies,
         languages: country.languages,
         "border countries": country.borders,
@@ -48,6 +48,7 @@ export default function CountryPage() {
     <div className="w-[90%] max-w-6xl mx-auto capitalize">
       <img src={countryData.flag} alt="country flag" />
       <div>
+        {/* part 1  */}
         <div>
           <h2>{countryData.name}</h2>
           {labels1.map((label, index) => {
@@ -59,6 +60,21 @@ export default function CountryPage() {
                 </span>
               </div>
             );
+          })}
+        </div>
+
+        {/* part 2 */}
+        <div>
+          {labels2.map((label, index) => {
+            console.log(countryData[label]);
+            // return (
+            //   <div key={index} className="flex gap-2">
+            //     <span className="dark:text-White">{label} : </span>
+            //     <span className="dark:text-VeryLightGray font-light">
+            //       {countryData[label]}
+            //     </span>
+            //   </div>
+            // );
           })}
         </div>
       </div>
