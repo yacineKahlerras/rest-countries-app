@@ -1,9 +1,18 @@
-import React from "react";
+import FilterDataContext from "@/utils/contexts/FilterDataContext";
+import React, { useContext } from "react";
 import CountryElement from "./CountryElement";
 
 function CountriesMap(props) {
   const { countriesList } = props;
+  const { regionIndex, setRegionIndex, dropDownContent } =
+    useContext(FilterDataContext);
   let newCountriesList = countriesList;
+
+  if (regionIndex != null) {
+    newCountriesList = newCountriesList.filter(
+      (country) => country.region == dropDownContent[regionIndex]
+    );
+  }
 
   return (
     <div
