@@ -30,12 +30,12 @@ function CountryName(props) {
         : NamePieces(country.name.common, searchFilter).map((piece, index) => {
             if (piece == searchFilter)
               return (
-                <span
+                <b
                   key={index}
                   className="text-DarkGray underline font-extrabold"
                 >
                   {piece}
-                </span>
+                </b>
               );
             return piece;
           })}
