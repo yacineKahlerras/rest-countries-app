@@ -7,6 +7,7 @@ function CountriesMap(props) {
   const { regionIndex, dropDownContent, searchFilter } =
     useContext(FilterDataContext);
   let newCountriesList = countriesList;
+  const searchReg = new RegExp(searchFilter, "i");
 
   if (regionIndex != null) {
     newCountriesList = newCountriesList.filter(
@@ -15,12 +16,15 @@ function CountriesMap(props) {
   }
 
   if (searchFilter != "") {
+    newCountriesList = newCountriesList.filter((countries) =>
+      searchReg.test(countries.name.common)
+    );
   }
 
   return (
     <div
       className="grid justify-center justify-items-center gap-5 grid-cols-countriesMap 
-      max-w-[93rem] mx-auto "
+      max-w-[93rem] mx-auto pb-14"
     >
       {newCountriesList.map((country, countryIdx) => {
         return <CountryElement key={countryIdx} country={country} />;
