@@ -12,15 +12,15 @@ export default function CountryPage() {
   let countryData = country
     ? {
         name: country.name.common,
-        nativeName: country.name.nativeName.eng,
+        "native name": country.name.nativeName.eng,
         population: country.population,
         region: country.region,
-        subregion: country.subregion,
+        "sub region": country.subregion,
         capital: country.capital,
-        topLevelDomain: country.tld,
+        "top level domain": country.tld,
         currencies: country.currencies,
         languages: country.languages,
-        borderCountries: country.borders,
+        "border countries": country.borders,
         flag: country.flags.svg,
       }
     : {};
