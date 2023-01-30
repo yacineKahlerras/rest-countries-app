@@ -18,8 +18,8 @@ export default function CountryPage() {
         "sub region": country.subregion,
         capital: country.capital[0],
         "top level domain": country.tld[0],
-        currencies: country.currencies,
-        languages: country.languages,
+        currencies: country.currencies[Object.keys(country.currencies)[0]].name,
+        languages: Object.values(country.languages).join(", "),
         "border countries": country.borders,
         flag: country.flags.svg,
       }
@@ -66,15 +66,14 @@ export default function CountryPage() {
         {/* part 2 */}
         <div>
           {labels2.map((label, index) => {
-            console.log(countryData[label]);
-            // return (
-            //   <div key={index} className="flex gap-2">
-            //     <span className="dark:text-White">{label} : </span>
-            //     <span className="dark:text-VeryLightGray font-light">
-            //       {countryData[label]}
-            //     </span>
-            //   </div>
-            // );
+            return (
+              <div key={index} className="flex gap-2">
+                <span className="dark:text-White">{label} : </span>
+                <span className="dark:text-VeryLightGray font-light">
+                  {countryData[label]}
+                </span>
+              </div>
+            );
           })}
         </div>
       </div>
