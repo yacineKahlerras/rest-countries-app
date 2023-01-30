@@ -4,9 +4,10 @@ import SearchInput from "./components/SearchInput";
 import axios from "axios";
 import CountriesMap from "./components/CountriesMap";
 import FilterDataContext from "@/utils/contexts/FilterDataContext";
+import { useOutletContext } from "react-router-dom";
 
-function MainPage() {
-  const [countries, setCountries] = useState();
+function MainPage(props) {
+  const [countries] = useOutletContext();
   const [regionIndex, setRegionIndex] = useState();
   const [searchFilter, setSearchFilter] = useState("");
   const dropDownContent = ["Africa", "Americas", "Asia", "Europe", "Oceania"];
@@ -18,12 +19,6 @@ function MainPage() {
     searchFilter,
     setSearchFilter,
   };
-
-  useEffect(() => {
-    axios.get(`https://restcountries.com/v3.1/all`).then((res) => {
-      setCountries(res.data);
-    });
-  }, []);
 
   return (
     <FilterDataContext.Provider value={filterData}>
