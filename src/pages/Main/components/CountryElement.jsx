@@ -20,10 +20,16 @@ function CountryElement(props) {
 
   return (
     <div
-      className="max-w-xs bg-White dark:bg-DarkBlue overflow-hidden rounded-md 
+      className="max-w-xs w-full bg-White dark:bg-DarkBlue overflow-hidden rounded-md 
     capitalize drop-shadow-xl shadow-DarkBlue"
     >
-      <img src={country.flags.svg} alt="country flag" />
+      <div className="h-[12rem] relative">
+        <img
+          className="h-full w-full absolute object-cover object-center"
+          src={country.flags.svg}
+          alt="country flag"
+        />
+      </div>
       <div className="p-6">
         <h2 className="font-bold text-lg mb-3">{country.name.common}</h2>
         {infos.map((inf, infoIdx) => {
