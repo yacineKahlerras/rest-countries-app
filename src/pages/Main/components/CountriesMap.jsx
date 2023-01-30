@@ -4,7 +4,7 @@ import CountryElement from "./CountryElement";
 
 function CountriesMap(props) {
   const { countriesList } = props;
-  const { regionIndex, setRegionIndex, dropDownContent } =
+  const { regionIndex, dropDownContent, searchFilter } =
     useContext(FilterDataContext);
   let newCountriesList = countriesList;
 
@@ -12,6 +12,9 @@ function CountriesMap(props) {
     newCountriesList = newCountriesList.filter(
       (country) => country.region == dropDownContent[regionIndex]
     );
+  }
+
+  if (searchFilter != "") {
   }
 
   return (

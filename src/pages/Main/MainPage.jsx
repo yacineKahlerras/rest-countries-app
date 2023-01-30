@@ -8,12 +8,15 @@ import FilterDataContext from "@/utils/contexts/FilterDataContext";
 function MainPage() {
   const [countries, setCountries] = useState();
   const [regionIndex, setRegionIndex] = useState();
+  const [searchFilter, setSearchFilter] = useState("");
   const dropDownContent = ["Africa", "Americas", "Asia", "Europe", "Oceania"];
 
   const filterData = {
-    regionIndex: regionIndex,
-    setRegionIndex: setRegionIndex,
-    dropDownContent: dropDownContent,
+    regionIndex,
+    setRegionIndex,
+    dropDownContent,
+    searchFilter,
+    setSearchFilter,
   };
 
   useEffect(() => {
