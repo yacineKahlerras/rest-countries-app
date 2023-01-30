@@ -6,10 +6,11 @@ import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ErrorPage from "./pages/error/ErrorPage";
 import CountryPage from "./pages/CountryPage/CountryPage";
+import baseUrl from "@/utils/data/baseUrl";
 
 const router = createBrowserRouter([
   {
-    path: "/rest-countries-app",
+    path: baseUrl,
     element: <App />,
     errorElement: <ErrorPage />,
     children: [
@@ -18,7 +19,7 @@ const router = createBrowserRouter([
         element: <MainPage />,
       },
       {
-        path: "/rest-countries-app/:countryName",
+        path: `${baseUrl}/:countryName`,
         element: <CountryPage />,
         errorElement: <ErrorPage />,
       },

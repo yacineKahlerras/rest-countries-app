@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import DropDown from "./components/DropDown";
 import SearchInput from "./components/SearchInput";
-import axios from "axios";
 import CountriesMap from "./components/CountriesMap";
 import FilterDataContext from "@/utils/contexts/FilterDataContext";
 import { useOutletContext } from "react-router-dom";
