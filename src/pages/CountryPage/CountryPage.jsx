@@ -11,6 +11,7 @@ export default function CountryPage() {
   const [country, setCountry] = useState();
   let countryData = country
     ? {
+        name: country.name.common,
         nativeName: country.name.nativeName.eng,
         population: country.population,
         region: country.region,
@@ -35,5 +36,14 @@ export default function CountryPage() {
     if (countries != null && country == null) getCountryData();
   }, [countries]);
 
-  return <h1>Heyaaaaaa</h1>;
+  return (
+    <div className="w-[90%] max-w-6xl mx-auto">
+      <img src={countryData.flag} alt="country flag" />
+      <div>
+        <div>
+          <h2>{countryData.name}</h2>
+        </div>
+      </div>
+    </div>
+  );
 }
