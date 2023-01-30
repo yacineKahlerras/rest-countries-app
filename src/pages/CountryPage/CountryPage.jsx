@@ -9,6 +9,21 @@ export default function CountryPage() {
   const countryName = useLoaderData().replace(/_+/g, " ").toLowerCase();
   const [countries] = useOutletContext();
   const [country, setCountry] = useState();
+  let countryData = country
+    ? {
+        nativeName: country.name.nativeName.eng,
+        population: country.population,
+        region: country.region,
+        subregion: country.subregion,
+        capital: country.capital,
+        topLevelDomain: country.tld,
+        currencies: country.currencies,
+        languages: country.languages,
+        borderCountries: country.borders,
+      }
+    : {};
+
+  console.log(countryData);
 
   function getCountryData() {
     for (let i = 0; i < countries.length; i++) {
