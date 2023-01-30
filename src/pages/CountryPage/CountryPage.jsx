@@ -20,10 +20,9 @@ export default function CountryPage() {
         currencies: country.currencies,
         languages: country.languages,
         borderCountries: country.borders,
+        flag: country.flags.svg,
       }
     : {};
-
-  console.log(countryData);
 
   function getCountryData() {
     for (let i = 0; i < countries.length; i++) {
