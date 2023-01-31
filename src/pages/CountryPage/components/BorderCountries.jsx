@@ -3,7 +3,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 export default function BorderCountries(props) {
-  const { countries, currentCountry, borderSigns } = props;
+  const { countries, borderSigns } = props;
   const neighbours = borderSigns
     ? borderSigns.map((sign) => {
         for (let i = 0; i < countries.length; i++) {
@@ -27,7 +27,7 @@ export default function BorderCountries(props) {
             <Link
               to={`${baseUrl}/${border.linkName}`}
               key={index}
-              className="bg-DarkBlue p-[.3em] px-[1.3em] rounded-sm "
+              className="bg-White dark:bg-DarkBlue p-[.3em] px-[1.3em] rounded-sm drop-shadow-lg "
             >
               {border.name}
             </Link>
