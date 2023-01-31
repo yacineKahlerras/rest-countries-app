@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useLoaderData, useOutletContext } from "react-router-dom";
+import BorderCountries from "./components/BorderCountries";
 
 export async function CountryPageLoader({ params }) {
   return params.countryName;
@@ -12,7 +13,9 @@ export default function CountryPage() {
   let countryData = country
     ? {
         name: country.name.common,
-        "native name": country.name.nativeName.eng.common,
+        "native name":
+          country.name.nativeName[Object.keys(country.name.nativeName)[0]]
+            .common,
         population: country.population,
         region: country.region,
         "sub region": country.subregion,
@@ -32,8 +35,6 @@ export default function CountryPage() {
     "capital",
   ];
   const labels2 = ["top level domain", "currencies", "languages"];
-
-  console.log(country ? country.cca3 : "");
 
   function getCountryData() {
     for (let i = 0; i < countries.length; i++) {
@@ -80,9 +81,11 @@ export default function CountryPage() {
         </div>
 
         {/* part 3  */}
-        <div>
-          <h2>border countries</h2>
-        </div>
+        <BorderCountries
+          countries={countries}
+          currentCountry={country}
+          borderSigns={countryData["border countries"]}
+        />
       </div>
     </div>
   );

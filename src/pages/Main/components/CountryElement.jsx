@@ -36,10 +36,13 @@ function CountryElement(props) {
   ];
 
   return (
-    <Link to={`${baseUrl}/${countryName}`} className="w-full">
+    <Link
+      to={`${baseUrl}/${countryName}`}
+      className={`w-full ${isHidden ? "hidden" : ""}`}
+    >
       <div
         className={`max-w-xs w-full bg-White dark:bg-DarkBlue overflow-hidden rounded-md 
-    capitalize drop-shadow-xl shadow-DarkBlue ${isHidden ? "hidden" : ""}`}
+    capitalize drop-shadow-xl shadow-DarkBlue`}
       >
         <div className="h-[12rem] relative">
           <img
