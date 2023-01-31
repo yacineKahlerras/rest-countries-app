@@ -2,6 +2,8 @@ import React, { useContext } from "react";
 import sunIcon from "@/assets/images/darkTheme/brightness-low-fill.svg";
 import moonIcon from "@/assets/images/darkTheme/moon-fill.svg";
 import DarkThemeContext from "@/utils/contexts/DarkThemeContext";
+import { Link } from "react-router-dom";
+import baseUrl from "@/utils/data/baseUrl";
 
 function Nav() {
   const { darkTheme, setDarkTheme } = useContext(DarkThemeContext);
@@ -13,7 +15,9 @@ function Nav() {
   return (
     <nav className="bg-White dark:bg-DarkBlue drop-shadow-md">
       <div className="flex justify-between items-center px-4 py-6">
-        <h1>Where is the world ?</h1>
+        <Link to={`${baseUrl}`}>
+          <h1>Where is the world ?</h1>
+        </Link>
         <button onClick={toggleTheme} className="flex gap-1 items-center">
           <img
             src={darkTheme ? sunIcon : moonIcon}

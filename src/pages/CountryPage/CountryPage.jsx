@@ -47,6 +47,10 @@ export default function CountryPage() {
     if (countries != null && country == null) getCountryData();
   }, [countries]);
 
+  useEffect(() => {
+    getCountryData();
+  }, [countryName]);
+
   return (
     <div className="w-[90%] max-w-6xl mx-auto capitalize">
       <img src={countryData.flag} alt="country flag" />
