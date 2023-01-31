@@ -57,7 +57,7 @@ export default function CountryPage() {
       <div>
         {/* part 1  */}
         <div>
-          <h2>{countryData.name}</h2>
+          <h2 className="font-bold text-lg mb-3">{countryData.name}</h2>
           {labels1.map((label, index) => {
             return (
               <div key={index} className="flex gap-2">
