@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useLoaderData, useNavigate, useOutletContext } from "react-router-dom";
 import BorderCountries from "./components/BorderCountries";
+import backIcon from "@/assets/images/buttons/arrow-left.svg";
 
 export async function CountryPageLoader({ params }) {
   return params.countryName;
@@ -58,7 +59,14 @@ export default function CountryPage() {
 
   return (
     <div className="w-[90%] max-w-6xl mx-auto capitalize py-14">
-      <button onClick={() => navigate(-1)}>Back</button>
+      <button
+        className="bg-White dark:bg-DarkBlue p-[.3em] px-[1.2em] rounded-sm mb-9 flex gap-2 
+        items-center text-sm drop-shadow-md "
+        onClick={() => navigate(-1)}
+      >
+        <img className="dark:invert" src={backIcon} alt="back button" />
+        Back
+      </button>
       <div>
         <img src={countryData.flag} alt="country flag" className="mb-5" />
         <div>
