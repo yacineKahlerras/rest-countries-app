@@ -5,7 +5,7 @@ import CountriesMap from "./components/CountriesMap";
 import FilterDataContext from "@/utils/contexts/FilterDataContext";
 import { useOutletContext } from "react-router-dom";
 
-function MainPage(props) {
+function MainPage() {
   const [countries] = useOutletContext();
   const [regionIndex, setRegionIndex] = useState();
   const [searchFilter, setSearchFilter] = useState("");
