@@ -6,7 +6,7 @@ import CountryName from "./CountryName";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 
 function CountryElement(props) {
-  const { country } = props;
+  const { country, scrollPosition } = props;
   const { searchFilter, regionIndex, dropDownContent } =
     useContext(FilterDataContext);
   let isHidden = false;
@@ -49,6 +49,7 @@ function CountryElement(props) {
           <LazyLoadImage
             className="h-full w-full absolute object-cover object-center"
             src={country.flags.svg}
+            scrollPosition={scrollPosition}
             alt="country flag"
           />
         </div>

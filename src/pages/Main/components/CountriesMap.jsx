@@ -1,8 +1,9 @@
 import React, { lazy, Suspense } from "react";
 const CountryElement = lazy(() => import("./CountryElement"));
+import { trackWindowScroll } from "react-lazy-load-image-component";
 
 function CountriesMap(props) {
-  const { countriesList } = props;
+  const { countriesList, scrollPosition } = props;
 
   return (
     <div
@@ -12,7 +13,7 @@ function CountriesMap(props) {
       {countriesList.map((country, countryIdx) => {
         return (
           <Suspense key={countryIdx} fallback={<h1>getting country..</h1>}>
-            <CountryElement country={country} />
+            <CountryElement scrollPosition={scrollPosition} country={country} />
           </Suspense>
         );
       })}
@@ -20,4 +21,4 @@ function CountriesMap(props) {
   );
 }
 
-export default CountriesMap;
+export default trackWindowScroll(CountriesMap);
