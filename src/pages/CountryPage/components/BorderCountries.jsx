@@ -19,8 +19,8 @@ export default function BorderCountries(props) {
     : [];
 
   return (
-    <div className=" col-span-2">
-      <h2 className="font-bold text-base mb-3">border countries</h2>
+    <div className=" sm:col-span-2">
+      <h2 className="font-bold text-base mb-4">border countries</h2>
       <div className="flex gap-2 flex-wrap justify-center lg:justify-start">
         {neighbours.map((border, index) => {
           return (

@@ -68,22 +68,22 @@ export default function CountryPage() {
         Back
       </button>
       <div
-        className="grid justify-center lg:grid-cols-2 
-        lg:justify-between mx-auto justify-items-center lg:gap-5 text-center lg:text-left"
+        className="grid justify-center lg:gap-5 lg:grid-cols-2 lg:justify-between mx-auto 
+        lg:text-left justify-items-center "
       >
         <img
           src={countryData.flag}
           alt="country flag"
-          className="mb-5 w-full max-w-md"
+          className="mb-5 w-full max-w-md drop-shadow-lg"
         />
-        <div className=" grid grid-cols-2">
+        <div className=" grid lg:grid-cols-2">
           {/* title */}
-          <h2 className="font-bold text-lg mb-3 col-span-2">
+          <h2 className="font-bold text-lg mb-3 lg:mb-0 sm:col-span-2">
             {countryData.name}
           </h2>
 
           {/* part 1  */}
-          <div>
+          <div className="mb-5 lg:mb-0">
             {labels1.map((label, index) => {
               return (
                 <div key={index} className="flex gap-2">
@@ -97,7 +97,7 @@ export default function CountryPage() {
           </div>
 
           {/* part 2 */}
-          <div>
+          <div className="mb-5 lg:mb-0">
             {labels2.map((label, index) => {
               return (
                 <div key={index} className="flex gap-2">
