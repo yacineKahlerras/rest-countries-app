@@ -47,16 +47,20 @@ function CountryElement(props) {
     capitalize drop-shadow-xl shadow-DarkBlue`}
       >
         <div className="h-[12rem] relative">
-          {/* <LazyLoadImage
+          <LazyLoadImage
             className="h-full w-full absolute object-cover object-center"
             src={country.flags.svg}
             scrollPosition={scrollPosition}
-            placeholder={<Skeleton animation="wave" />}
+            placeholder={
+              <Skeleton
+                height="100%"
+                style={{
+                  transform: "scale(1)",
+                }}
+                animation="wave"
+              />
+            }
             alt="country flag"
-          /> */}
-          <Skeleton
-            className="h-full w-full absolute object-cover object-center"
-            animation="wave"
           />
         </div>
         <div className="p-6">
