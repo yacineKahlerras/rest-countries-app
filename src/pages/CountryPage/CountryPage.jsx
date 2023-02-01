@@ -74,7 +74,7 @@ export default function CountryPage() {
         <img
           src={countryData.flag}
           alt="country flag"
-          className="mb-5 w-full max-w-md drop-shadow-lg"
+          className="mb-5 w-full max-h-60 max-w-md drop-shadow-lg"
         />
         <div className=" grid lg:grid-cols-2">
           {/* title */}
