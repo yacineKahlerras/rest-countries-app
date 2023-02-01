@@ -58,7 +58,7 @@ export default function CountryPage() {
   }, [countryName]);
 
   return (
-    <div className="w-[90%] max-w-6xl mx-auto capitalize py-14">
+    <div className="w-[90%] max-w-md lg:max-w-6xl mx-auto capitalize py-14">
       <button
         className="bg-White dark:bg-DarkBlue p-[.3em] px-[1.2em] rounded-sm mb-9 flex gap-2 
         items-center text-sm drop-shadow-md "
@@ -67,12 +67,23 @@ export default function CountryPage() {
         <img className="dark:invert" src={backIcon} alt="back button" />
         Back
       </button>
-      <div>
-        <img src={countryData.flag} alt="country flag" className="mb-5" />
-        <div>
+      <div
+        className="grid justify-center lg:grid-cols-2 
+        lg:justify-between mx-auto justify-items-center lg:gap-5 text-center lg:text-left"
+      >
+        <img
+          src={countryData.flag}
+          alt="country flag"
+          className="mb-5 w-full max-w-md"
+        />
+        <div className=" grid grid-cols-2">
+          {/* title */}
+          <h2 className="font-bold text-lg mb-3 col-span-2">
+            {countryData.name}
+          </h2>
+
           {/* part 1  */}
           <div>
-            <h2 className="font-bold text-lg mb-3">{countryData.name}</h2>
             {labels1.map((label, index) => {
               return (
                 <div key={index} className="flex gap-2">
