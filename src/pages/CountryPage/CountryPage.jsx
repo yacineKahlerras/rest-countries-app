@@ -78,7 +78,7 @@ export default function CountryPage() {
         />
         <div className=" grid lg:grid-cols-2">
           {/* title */}
-          <h2 className="font-bold text-lg mb-3 lg:mb-0 sm:col-span-2">
+          <h2 className="font-bold text-lg sm:text-2xl mb-3 lg:mb-0 sm:col-span-2">
             {countryData.name}
           </h2>
 
