@@ -20,12 +20,12 @@ function DropDown() {
   }
 
   return (
-    <div className="max-w-[12rem] relative mb-5">
+    <div className="max-w-[12rem] min-w-[10.7rem] relative mb-5 sm:mb-0">
       <button
         onClick={dropDownToggle}
         data-dropdown-toggle="dropdown"
         className="w-full text-VeryDarkBlue dark:text-White bg-White dark:bg-DarkBlue
-        rounded-lg text-sm px-[1.25em] py-[.625em] text-center inline-flex items-center drop-shadow-md 
+        rounded-lg px-[1.25em] py-[.625em] text-center inline-flex items-center drop-shadow-md 
         justify-between relative"
         type="button"
       >
@@ -52,7 +52,7 @@ function DropDown() {
         dark:bg-DarkBlue absolute top-[3em] ${activeDropDown ? "" : "hidden"}`}
       >
         <ul
-          className="py-2 text-sm text-gray-700 dark:text-gray-200"
+          className="py-2 text-gray-700 dark:text-gray-200"
           aria-labelledby="dropdownDefaultButton"
         >
           {dropDownContent.map((dropText, index) => {

@@ -7,7 +7,7 @@ function CountriesMap(props) {
   return (
     <div
       className="grid justify-center justify-items-center gap-5 grid-cols-countriesMap 
-      max-w-[93rem] mx-auto pb-14"
+       mx-auto pb-14"
     >
       {countriesList.map((country, countryIdx) => {
         return <CountryElement key={countryIdx} country={country} />;

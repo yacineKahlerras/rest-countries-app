@@ -14,7 +14,7 @@ function Nav() {
 
   return (
     <nav className="bg-White dark:bg-DarkBlue drop-shadow-md">
-      <div className="flex justify-between items-center px-4 py-6">
+      <div className="max-w-7xl mx-auto flex justify-between items-center px-4 py-6">
         <Link to={`${baseUrl}`}>
           <h1>Where is the world ?</h1>
         </Link>

@@ -21,13 +21,15 @@ function MainPage() {
 
   return (
     <FilterDataContext.Provider value={filterData}>
-      <div className="pt-8 px-5">
-        <SearchInput />
-        <DropDown
-          regionIndex={regionIndex}
-          setRegionIndex={setRegionIndex}
-          dropDownContent={dropDownContent}
-        />
+      <div className="pt-8 px-5 max-w-7xl mx-auto">
+        <div className="sm:flex justify-between mb-5 items-center">
+          <SearchInput />
+          <DropDown
+            regionIndex={regionIndex}
+            setRegionIndex={setRegionIndex}
+            dropDownContent={dropDownContent}
+          />
+        </div>
         {countries ? <CountriesMap countriesList={countries} /> : ""}
       </div>
     </FilterDataContext.Provider>
