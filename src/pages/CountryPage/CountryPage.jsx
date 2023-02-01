@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useLoaderData, useNavigate, useOutletContext } from "react-router-dom";
 import BorderCountries from "./components/BorderCountries";
 import backIcon from "@/assets/images/buttons/arrow-left.svg";
+import Loading from "./components/Loading";
 
 export async function CountryPageLoader({ params }) {
   return params.countryName;
@@ -41,6 +42,7 @@ export default function CountryPage() {
   ];
   const labels2 = ["top level domain", "currencies", "languages"];
   const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(false);
 
   function getCountryData() {
     for (let i = 0; i < countries.length; i++) {
@@ -57,16 +59,24 @@ export default function CountryPage() {
     if (countries != null) getCountryData();
   }, [countryName]);
 
+  function BackPage() {
+    setIsLoading(true);
+    navigate(-1);
+  }
+
   return (
-    <div className="w-[90%] max-w-md lg:max-w-6xl mx-auto capitalize py-14">
+    <div className="w-[90%] max-w-md lg:max-w-6xl mx-auto capitalize py-14 relative">
+      {/* back button */}
       <button
         className="bg-White dark:bg-DarkBlue p-[.3em] px-[1.2em] rounded-sm mb-9 flex gap-2 
         items-center text-sm drop-shadow-md "
-        onClick={() => navigate(-1)}
+        onClick={BackPage}
       >
         <img className="dark:invert" src={backIcon} alt="back button" />
         Back
       </button>
+
+      {/* country section */}
       <div
         className="grid justify-center lg:gap-5 lg:grid-cols-2 lg:justify-between mx-auto 
         lg:text-left"
@@ -114,7 +124,7 @@ export default function CountryPage() {
             })}
           </div>
 
-          {/* part 3  */}
+          {/* border countries  */}
           <BorderCountries
             countries={countries}
             currentCountry={country}
@@ -122,6 +132,9 @@ export default function CountryPage() {
           />
         </div>
       </div>
+
+      {/* loading component */}
+      <Loading isLoading={isLoading} />
     </div>
   );
 }
