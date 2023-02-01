@@ -3,6 +3,7 @@ import baseUrl from "@/utils/data/baseUrl";
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import CountryName from "./CountryName";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 function CountryElement(props) {
   const { country } = props;
@@ -45,11 +46,10 @@ function CountryElement(props) {
     capitalize drop-shadow-xl shadow-DarkBlue`}
       >
         <div className="h-[12rem] relative">
-          <img
+          <LazyLoadImage
             className="h-full w-full absolute object-cover object-center"
             src={country.flags.svg}
             alt="country flag"
-            loading="lazy"
           />
         </div>
         <div className="p-6">
