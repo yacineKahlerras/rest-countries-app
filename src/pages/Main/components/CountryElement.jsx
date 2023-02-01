@@ -37,7 +37,7 @@ function CountryElement(props) {
 
   return (
     <Link
-      to={`${baseUrl}/${countryName}`}
+      to={`${baseUrl}${countryName}`}
       className={`w-full ${isHidden ? "hidden" : ""}`}
     >
       <div

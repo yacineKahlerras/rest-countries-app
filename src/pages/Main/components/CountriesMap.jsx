@@ -1,5 +1,5 @@
-import React from "react";
-import CountryElement from "./CountryElement";
+import React, { lazy, Suspense } from "react";
+const CountryElement = lazy(() => import("./CountryElement"));
 
 function CountriesMap(props) {
   const { countriesList } = props;
@@ -10,7 +10,11 @@ function CountriesMap(props) {
        mx-auto pb-14"
     >
       {countriesList.map((country, countryIdx) => {
-        return <CountryElement key={countryIdx} country={country} />;
+        return (
+          <Suspense key={countryIdx} fallback={<h1>getting country..</h1>}>
+            <CountryElement country={country} />
+          </Suspense>
+        );
       })}
     </div>
   );

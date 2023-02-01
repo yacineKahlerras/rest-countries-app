@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, Suspense, lazy } from "react";
 import DropDown from "./components/DropDown";
 import SearchInput from "./components/SearchInput";
-import CountriesMap from "./components/CountriesMap";
 import FilterDataContext from "@/utils/contexts/FilterDataContext";
 import { useOutletContext } from "react-router-dom";
+// import CountriesMap from "./components/CountriesMap";
+const CountriesMap = lazy(() => import("./components/CountriesMap"));
 
 function MainPage() {
   const [countries] = useOutletContext();
@@ -30,7 +31,9 @@ function MainPage() {
             dropDownContent={dropDownContent}
           />
         </div>
-        {countries ? <CountriesMap countriesList={countries} /> : ""}
+        <Suspense fallback={<h1>Loading..</h1>}>
+          {countries ? <CountriesMap countriesList={countries} /> : ""}
+        </Suspense>
       </div>
     </FilterDataContext.Provider>
   );

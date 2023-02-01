@@ -1,3 +1,3 @@
-const baseUrl = "/rest-countries-app";
+const baseUrl = "/rest-countries-app/";
 
 export default baseUrl;
