@@ -4,6 +4,7 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import CountryName from "./CountryName";
 import { LazyLoadImage } from "react-lazy-load-image-component";
+import { Skeleton } from "@mui/material";
 
 function CountryElement(props) {
   const { country, scrollPosition } = props;
@@ -46,11 +47,16 @@ function CountryElement(props) {
     capitalize drop-shadow-xl shadow-DarkBlue`}
       >
         <div className="h-[12rem] relative">
-          <LazyLoadImage
+          {/* <LazyLoadImage
             className="h-full w-full absolute object-cover object-center"
             src={country.flags.svg}
             scrollPosition={scrollPosition}
+            placeholder={<Skeleton animation="wave" />}
             alt="country flag"
+          /> */}
+          <Skeleton
+            className="h-full w-full absolute object-cover object-center"
+            animation="wave"
           />
         </div>
         <div className="p-6">

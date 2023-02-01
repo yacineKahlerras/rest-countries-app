@@ -1,5 +1,5 @@
 import React from "react";
-import { Triangle, Oval } from "react-loader-spinner";
+import { Oval } from "react-loader-spinner";
 
 export default function Loading(props) {
   let { isLoading } = props;
