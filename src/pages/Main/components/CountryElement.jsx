@@ -49,6 +49,7 @@ function CountryElement(props) {
             className="h-full w-full absolute object-cover object-center"
             src={country.flags.svg}
             alt="country flag"
+            loading="lazy"
           />
         </div>
         <div className="p-6">
