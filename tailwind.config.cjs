@@ -5,7 +5,7 @@ module.exports = {
   theme: {
     extend: {
       gridTemplateColumns: {
-        countriesMap: "repeat( auto-fit, minmax(15.62rem, 20rem) )",
+        countriesMap: "repeat( auto-fit, minmax(15.62rem, 18.4rem) )",
       },
     },
     colors: {
