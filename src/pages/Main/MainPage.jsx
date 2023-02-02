@@ -4,7 +4,6 @@ import SearchInput from "./components/SearchInput";
 import FilterDataContext from "@/utils/contexts/FilterDataContext";
 import { useOutletContext } from "react-router-dom";
 import { Oval } from "react-loader-spinner";
-// import CountriesMap from "./components/CountriesMap";
 const CountriesMap = lazy(() => import("./components/CountriesMap"));
 
 function MainPage() {
