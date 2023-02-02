@@ -54,9 +54,7 @@ function CountryElement(props) {
             placeholder={
               <Skeleton
                 height="100%"
-                style={{
-                  transform: "scale(1)",
-                }}
+                sx={{ transform: "scale(1)" }}
                 animation="wave"
               />
             }

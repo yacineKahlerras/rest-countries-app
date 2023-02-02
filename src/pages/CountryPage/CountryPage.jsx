@@ -3,6 +3,8 @@ import { useLoaderData, useNavigate, useOutletContext } from "react-router-dom";
 import BorderCountries from "./components/BorderCountries";
 import backIcon from "@/assets/images/buttons/arrow-left.svg";
 import Loading from "./components/Loading";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import { Skeleton } from "@mui/material";
 
 export async function CountryPageLoader({ params }) {
   return params.countryName;
@@ -81,10 +83,18 @@ export default function CountryPage() {
         className="grid justify-center lg:gap-5 lg:grid-cols-2 lg:justify-between mx-auto 
         lg:text-left"
       >
-        <img
-          src={countryData.flag}
-          alt="country flag"
+        <LazyLoadImage
           className="mb-5 w-full max-h-60 max-w-md drop-shadow-lg"
+          src={countryData.flag}
+          placeholder={
+            <Skeleton
+              width="100%"
+              height="100%"
+              sx={{ transform: "scale(1)" }}
+              animation="wave"
+            />
+          }
+          alt="country flag"
         />
         <div className=" grid lg:grid-cols-2 grid-rows-[2.6em] gap-x-5">
           {/* title */}
