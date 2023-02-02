@@ -7,7 +7,7 @@ import {
 import { Oval } from "react-loader-spinner";
 
 function CountriesMap(props) {
-  const { countriesList, scrollPosition } = props;
+  const { countriesList } = props;
 
   // loading elements while in suspence
   const loading = (
@@ -36,10 +36,7 @@ function CountriesMap(props) {
         return (
           <LazyLoadComponent key={country.name.common}>
             <Suspense fallback={loading}>
-              <CountryElement
-                scrollPosition={scrollPosition}
-                country={country}
-              />
+              <CountryElement country={country} />
             </Suspense>
           </LazyLoadComponent>
         );
@@ -48,5 +45,4 @@ function CountriesMap(props) {
   );
 }
 
-// export default trackWindowScroll(CountriesMap);
 export default memo(trackWindowScroll(CountriesMap));

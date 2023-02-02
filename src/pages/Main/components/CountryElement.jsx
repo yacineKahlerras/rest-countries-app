@@ -1,13 +1,13 @@
 import FilterDataContext from "@/utils/contexts/FilterDataContext";
 import baseUrl from "@/utils/data/baseUrl";
-import React, { useContext } from "react";
+import React, { memo, useContext } from "react";
 import { Link } from "react-router-dom";
 import CountryName from "./CountryName";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { Skeleton } from "@mui/material";
 
 function CountryElement(props) {
-  const { country, scrollPosition } = props;
+  const { country } = props;
   const { searchFilter, regionIndex, dropDownContent } =
     useContext(FilterDataContext);
   let isHidden = false;
@@ -50,7 +50,6 @@ function CountryElement(props) {
           <LazyLoadImage
             className="h-full w-full absolute object-cover object-center"
             src={country.flags.svg}
-            scrollPosition={scrollPosition}
             placeholder={
               <Skeleton
                 height="100%"
@@ -81,4 +80,4 @@ function CountryElement(props) {
   );
 }
 
-export default CountryElement;
+export default memo(CountryElement);
