@@ -1,6 +1,9 @@
 import React, { lazy, Suspense } from "react";
 const CountryElement = lazy(() => import("./CountryElement"));
-import { trackWindowScroll } from "react-lazy-load-image-component";
+import {
+  LazyLoadComponent,
+  trackWindowScroll,
+} from "react-lazy-load-image-component";
 import { Oval } from "react-loader-spinner";
 
 function CountriesMap(props) {
@@ -14,7 +17,7 @@ function CountriesMap(props) {
       {countriesList.map((country, countryIdx) => {
         return (
           <Suspense
-            key={countryIdx}
+            key={country.name.common}
             fallback={
               <div className=" p-12 ">
                 <Oval
@@ -32,7 +35,12 @@ function CountriesMap(props) {
               </div>
             }
           >
-            <CountryElement scrollPosition={scrollPosition} country={country} />
+            <LazyLoadComponent scrollPosition={scrollPosition}>
+              <CountryElement
+                scrollPosition={scrollPosition}
+                country={country}
+              />
+            </LazyLoadComponent>
           </Suspense>
         );
       })}
