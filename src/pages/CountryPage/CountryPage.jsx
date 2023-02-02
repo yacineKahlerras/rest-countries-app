@@ -90,7 +90,9 @@ export default function CountryPage() {
             <Skeleton
               width="100%"
               height="100%"
-              sx={{ transform: "scale(1)" }}
+              sx={{
+                transform: "scale(1)",
+              }}
               animation="wave"
             />
           }

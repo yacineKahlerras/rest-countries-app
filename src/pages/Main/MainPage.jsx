@@ -3,6 +3,7 @@ import DropDown from "./components/DropDown";
 import SearchInput from "./components/SearchInput";
 import FilterDataContext from "@/utils/contexts/FilterDataContext";
 import { useOutletContext } from "react-router-dom";
+import { Oval } from "react-loader-spinner";
 // import CountriesMap from "./components/CountriesMap";
 const CountriesMap = lazy(() => import("./components/CountriesMap"));
 
@@ -31,7 +32,24 @@ function MainPage() {
             dropDownContent={dropDownContent}
           />
         </div>
-        <Suspense fallback={<h1>Loading..</h1>}>
+        <Suspense
+          fallback={
+            <div className="w-full flex justify-center mt-24">
+              <Oval
+                height={80}
+                width={80}
+                color="#4fa94d"
+                wrapperStyle={{}}
+                wrapperClass=""
+                visible={true}
+                ariaLabel="oval-loading"
+                secondaryColor="#4fa94d"
+                strokeWidth={2}
+                strokeWidthSecondary={2}
+              />
+            </div>
+          }
+        >
           {countries ? <CountriesMap countriesList={countries} /> : ""}
         </Suspense>
       </div>
