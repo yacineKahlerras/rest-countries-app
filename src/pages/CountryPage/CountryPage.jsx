@@ -59,6 +59,7 @@ export default function CountryPage() {
 
   useEffect(() => {
     if (countries != null) getCountryData();
+    setIsLoading(false);
   }, [countryName]);
 
   function BackPage() {
