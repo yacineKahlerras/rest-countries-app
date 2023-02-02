@@ -5,7 +5,6 @@ import {
   trackWindowScroll,
 } from "react-lazy-load-image-component";
 import { Oval } from "react-loader-spinner";
-import { FixedSizeList as List } from "react-window";
 
 function CountriesMap(props) {
   const { countriesList, scrollPosition } = props;
@@ -33,20 +32,18 @@ function CountriesMap(props) {
       className="grid justify-center justify-items-center gap-5 grid-cols-countriesMap 
        mx-auto pb-14"
     >
-      <List width={1400} height={700} itemCount={250} itemSize={120}>
-        {countriesList.map((country, countryIdx) => {
-          return (
-            <LazyLoadComponent>
-              <Suspense key={country.name.common} fallback={loading}>
-                <CountryElement
-                  scrollPosition={scrollPosition}
-                  country={country}
-                />
-              </Suspense>
-            </LazyLoadComponent>
-          );
-        })}
-      </List>
+      {countriesList.map((country, countryIdx) => {
+        return (
+          <LazyLoadComponent key={country.name.common}>
+            <Suspense fallback={loading}>
+              <CountryElement
+                scrollPosition={scrollPosition}
+                country={country}
+              />
+            </Suspense>
+          </LazyLoadComponent>
+        );
+      })}
     </div>
   );
 }
