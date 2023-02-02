@@ -66,9 +66,11 @@ function CountryElement(props) {
           {infos.map((inf, infoIdx) => {
             return (
               <div key={infoIdx} className="flex gap-2">
-                <span className="dark:text-White">{inf.label} : </span>
-                <span className="dark:text-VeryLightGray font-light">
-                  {inf.value}
+                <span className="dark:text-White">
+                  {inf.label} :
+                  <span className="dark:text-VeryLightGray font-light ml-1">
+                    {inf.value}
+                  </span>
                 </span>
               </div>
             );
