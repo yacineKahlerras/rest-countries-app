@@ -1,6 +1,9 @@
 import React, { lazy, memo, Suspense } from "react";
 const CountryElement = lazy(() => import("./CountryElement"));
-import { trackWindowScroll } from "react-lazy-load-image-component";
+import {
+  LazyLoadComponent,
+  trackWindowScroll,
+} from "react-lazy-load-image-component";
 import { Oval } from "react-loader-spinner";
 import { FixedSizeList as List } from "react-window";
 
@@ -33,12 +36,14 @@ function CountriesMap(props) {
       <List width={1400} height={700} itemCount={250} itemSize={120}>
         {countriesList.map((country, countryIdx) => {
           return (
-            <Suspense key={country.name.common} fallback={loading}>
-              <CountryElement
-                scrollPosition={scrollPosition}
-                country={country}
-              />
-            </Suspense>
+            <LazyLoadComponent>
+              <Suspense key={country.name.common} fallback={loading}>
+                <CountryElement
+                  scrollPosition={scrollPosition}
+                  country={country}
+                />
+              </Suspense>
+            </LazyLoadComponent>
           );
         })}
       </List>
