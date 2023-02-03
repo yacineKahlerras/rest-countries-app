@@ -3,6 +3,7 @@ const CountryElement = lazy(() => import("./CountryElement"));
 import InfiniteScroll from "react-infinite-scroller";
 import { nanoid } from "nanoid";
 import FilterDataContext from "@/utils/contexts/FilterDataContext";
+import { Oval } from "react-loader-spinner";
 
 function CountriesMap(props) {
   const { countriesList } = props;
@@ -26,6 +27,24 @@ function CountriesMap(props) {
     smallCountryList.slice(0, itemsPerPage)
   );
   const [hasMore, setHasMore] = useState(true);
+
+  // loading elements while in suspence
+  const loading = (
+    <div key={nanoid()} className=" p-12 ">
+      <Oval
+        height={80}
+        width={80}
+        color="#4fa94d"
+        wrapperStyle={{}}
+        wrapperClass=""
+        visible={true}
+        ariaLabel="oval-loading"
+        secondaryColor="#4fa94d"
+        strokeWidth={2}
+        strokeWidthSecondary={2}
+      />
+    </div>
+  );
 
   useEffect(() => {
     setHasMore(true);
@@ -87,11 +106,7 @@ function CountriesMap(props) {
       pageStart={0}
       loadMore={loadCountries}
       hasMore={hasMore}
-      loader={
-        <h4 key={nanoid()} className="loader">
-          Loading...
-        </h4>
-      }
+      loader={loading}
       className="grid justify-center justify-items-center gap-5 grid-cols-countriesMap mx-auto pb-14"
     >
       {showCountry(tempCountries)}
@@ -100,39 +115,3 @@ function CountriesMap(props) {
 }
 
 export default memo(CountriesMap);
-
-// loading elements while in suspence
-// const loading = (
-//   <div className=" p-12 ">
-//     <Oval
-//       height={80}
-//       width={80}
-//       color="#4fa94d"
-//       wrapperStyle={{}}
-//       wrapperClass=""
-//       visible={true}
-//       ariaLabel="oval-loading"
-//       secondaryColor="#4fa94d"
-//       strokeWidth={2}
-//       strokeWidthSecondary={2}
-//     />
-//   </div>
-// );
-
-// basic grid items map
-// const basicMap = (
-//   <div
-//     className="grid justify-center justify-items-center gap-5 grid-cols-countriesMap
-//    mx-auto pb-14"
-//   >
-//     {countriesList.map((country, countryIdx) => {
-//       return (
-//         <LazyLoadComponent key={country.name.common}>
-//           <Suspense fallback={loading}>
-//             <CountryElement country={country} />
-//           </Suspense>
-//         </LazyLoadComponent>
-//       );
-//     })}
-//   </div>
-// );
