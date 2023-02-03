@@ -28,7 +28,8 @@ function CountriesMap(props) {
   const [hasMore, setHasMore] = useState(true);
 
   useEffect(() => {
-    setSmallCountryList((oldValue) =>
+    setHasMore(true);
+    setSmallCountryList(() =>
       countriesList.filter((contr) => {
         let pass = true;
         if (
@@ -80,8 +81,6 @@ function CountriesMap(props) {
       }
     }
   };
-
-  console.log(smallCountryList.length);
 
   return (
     <InfiniteScroll
