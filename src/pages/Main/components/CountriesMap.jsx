@@ -5,6 +5,7 @@ import {
   trackWindowScroll,
 } from "react-lazy-load-image-component";
 import { Oval } from "react-loader-spinner";
+import InfiniteScroll from "react-infinite-scroll-component";
 
 function CountriesMap(props) {
   const { countriesList } = props;
@@ -27,10 +28,11 @@ function CountriesMap(props) {
     </div>
   );
 
-  return (
+  // basic grid items map
+  const basicMap = (
     <div
       className="grid justify-center justify-items-center gap-5 grid-cols-countriesMap 
-       mx-auto pb-14"
+     mx-auto pb-14"
     >
       {countriesList.map((country, countryIdx) => {
         return (
@@ -43,6 +45,8 @@ function CountriesMap(props) {
       })}
     </div>
   );
+
+  return <></>;
 }
 
 export default memo(trackWindowScroll(CountriesMap));
