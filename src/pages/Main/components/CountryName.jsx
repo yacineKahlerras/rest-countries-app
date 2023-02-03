@@ -1,7 +1,9 @@
-import React from "react";
+import FilterDataContext from "@/utils/contexts/FilterDataContext";
+import React, { useContext } from "react";
 
 function CountryName(props) {
-  const { searchFilter, country } = props;
+  const { country } = props;
+  const { searchFilter } = useContext(FilterDataContext);
 
   function NamePieces(str, match) {
     str = str.toLowerCase();

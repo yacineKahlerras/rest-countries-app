@@ -8,19 +8,7 @@ import { Skeleton } from "@mui/material";
 
 function CountryElement(props) {
   const { country } = props;
-  const { searchFilter, regionIndex, dropDownContent } =
-    useContext(FilterDataContext);
-  let isHidden = false;
-  const searchReg = new RegExp(searchFilter, "i");
   const countryName = country.name.common.replace(/\s+/g, "_").toLowerCase();
-
-  if (regionIndex != null && country.region != dropDownContent[regionIndex]) {
-    isHidden = true;
-  }
-
-  if (searchFilter != "" && !searchReg.test(country.name.common)) {
-    isHidden = true;
-  }
 
   const infos = [
     {
@@ -38,10 +26,7 @@ function CountryElement(props) {
   ];
 
   return (
-    <Link
-      to={`${baseUrl}${countryName}`}
-      className={`w-full ${isHidden ? "hidden" : ""}`}
-    >
+    <Link to={`${baseUrl}${countryName}`} className={`w-full`}>
       <div
         className={`max-w-xs w-full bg-White dark:bg-DarkBlue overflow-hidden rounded-md 
     capitalize drop-shadow-xl shadow-DarkBlue`}
@@ -61,7 +46,7 @@ function CountryElement(props) {
           />
         </div>
         <div className="p-6">
-          <CountryName searchFilter={searchFilter} country={country} />
+          <CountryName country={country} />
           {infos.map((inf, infoIdx) => {
             return (
               <div key={infoIdx} className="flex gap-2">

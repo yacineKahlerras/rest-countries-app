@@ -1,52 +1,132 @@
-import React, { lazy, memo, Suspense } from "react";
+import React, {
+  lazy,
+  memo,
+  Suspense,
+  useState,
+  useEffect,
+  useContext,
+} from "react";
 const CountryElement = lazy(() => import("./CountryElement"));
 import {
   LazyLoadComponent,
   trackWindowScroll,
 } from "react-lazy-load-image-component";
 import { Oval } from "react-loader-spinner";
-import InfiniteScroll from "react-infinite-scroll-component";
+import InfiniteScroll from "react-infinite-scroller";
+import { nanoid } from "nanoid";
+import FilterDataContext from "@/utils/contexts/FilterDataContext";
 
 function CountriesMap(props) {
   const { countriesList } = props;
-
-  // loading elements while in suspence
-  const loading = (
-    <div className=" p-12 ">
-      <Oval
-        height={80}
-        width={80}
-        color="#4fa94d"
-        wrapperStyle={{}}
-        wrapperClass=""
-        visible={true}
-        ariaLabel="oval-loading"
-        secondaryColor="#4fa94d"
-        strokeWidth={2}
-        strokeWidthSecondary={2}
-      />
-    </div>
+  const { searchFilter, regionIndex, dropDownContent } =
+    useContext(FilterDataContext);
+  const searchReg = new RegExp(searchFilter, "i");
+  const [smallCountryList, setSmallCountryList] = useState(
+    countriesList.filter((contr) => {
+      let pass = true;
+      if (regionIndex != null && contr.region != dropDownContent[regionIndex]) {
+        pass = false;
+      }
+      if (searchFilter != "" && !searchReg.test(contr.name.common)) {
+        pass = false;
+      }
+      return pass;
+    })
   );
+  const itemsPerPage = 20;
+  const [tempCountries, setTempCountries] = useState(
+    smallCountryList.slice(0, itemsPerPage)
+  );
+  const [hasMore, setHasMore] = useState(true);
 
-  // basic grid items map
-  const basicMap = (
-    <div
-      className="grid justify-center justify-items-center gap-5 grid-cols-countriesMap 
-     mx-auto pb-14"
-    >
-      {countriesList.map((country, countryIdx) => {
-        return (
-          <LazyLoadComponent key={country.name.common}>
-            <Suspense fallback={loading}>
-              <CountryElement country={country} />
-            </Suspense>
-          </LazyLoadComponent>
+  // useEffect(() => {
+  //   setTempCountries(smallCountryList.slice(0, itemsPerPage));
+  //   console.log("boooop");
+  // }, [smallCountryList]);
+
+  const showCountry = (tempCountries) => {
+    var items = [];
+    for (var i = 0; i < tempCountries.length; i++) {
+      items.push(<CountryElement key={nanoid()} country={tempCountries[i]} />);
+    }
+    return items;
+  };
+
+  const loadCountries = () => {
+    if (tempCountries.length === smallCountryList.length) {
+      setHasMore(false);
+    } else {
+      const passedLimit =
+        tempCountries.length + itemsPerPage >= smallCountryList;
+
+      if (!passedLimit) {
+        setTempCountries(
+          tempCountries.concat(
+            smallCountryList.slice(
+              tempCountries.length,
+              tempCountries.length + itemsPerPage
+            )
+          )
         );
-      })}
-    </div>
-  );
+      } else {
+        setTempCountries(
+          tempCountries.concat(smallCountryList.slice(tempCountries.length))
+        );
+      }
+    }
+  };
 
-  return <></>;
+  return (
+    <InfiniteScroll
+      pageStart={0}
+      loadMore={loadCountries}
+      hasMore={hasMore}
+      loader={
+        <h4 key={nanoid()} className="loader">
+          Loading...
+        </h4>
+      }
+      className="grid justify-center justify-items-center gap-5 grid-cols-countriesMap mx-auto pb-14"
+    >
+      {showCountry(tempCountries)}
+    </InfiniteScroll>
+  );
 }
 
-export default memo(trackWindowScroll(CountriesMap));
+export default memo(CountriesMap);
+
+// loading elements while in suspence
+// const loading = (
+//   <div className=" p-12 ">
+//     <Oval
+//       height={80}
+//       width={80}
+//       color="#4fa94d"
+//       wrapperStyle={{}}
+//       wrapperClass=""
+//       visible={true}
+//       ariaLabel="oval-loading"
+//       secondaryColor="#4fa94d"
+//       strokeWidth={2}
+//       strokeWidthSecondary={2}
+//     />
+//   </div>
+// );
+
+// basic grid items map
+// const basicMap = (
+//   <div
+//     className="grid justify-center justify-items-center gap-5 grid-cols-countriesMap
+//    mx-auto pb-14"
+//   >
+//     {countriesList.map((country, countryIdx) => {
+//       return (
+//         <LazyLoadComponent key={country.name.common}>
+//           <Suspense fallback={loading}>
+//             <CountryElement country={country} />
+//           </Suspense>
+//         </LazyLoadComponent>
+//       );
+//     })}
+//   </div>
+// );
