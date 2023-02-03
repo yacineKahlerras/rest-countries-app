@@ -1,17 +1,5 @@
-import React, {
-  lazy,
-  memo,
-  Suspense,
-  useState,
-  useEffect,
-  useContext,
-} from "react";
+import React, { lazy, memo, useState, useEffect, useContext } from "react";
 const CountryElement = lazy(() => import("./CountryElement"));
-import {
-  LazyLoadComponent,
-  trackWindowScroll,
-} from "react-lazy-load-image-component";
-import { Oval } from "react-loader-spinner";
 import InfiniteScroll from "react-infinite-scroller";
 import { nanoid } from "nanoid";
 import FilterDataContext from "@/utils/contexts/FilterDataContext";
@@ -39,10 +27,27 @@ function CountriesMap(props) {
   );
   const [hasMore, setHasMore] = useState(true);
 
-  // useEffect(() => {
-  //   setTempCountries(smallCountryList.slice(0, itemsPerPage));
-  //   console.log("boooop");
-  // }, [smallCountryList]);
+  useEffect(() => {
+    setSmallCountryList((oldValue) =>
+      countriesList.filter((contr) => {
+        let pass = true;
+        if (
+          regionIndex != null &&
+          contr.region != dropDownContent[regionIndex]
+        ) {
+          pass = false;
+        }
+        if (searchFilter != "" && !searchReg.test(contr.name.common)) {
+          pass = false;
+        }
+        return pass;
+      })
+    );
+  }, [searchFilter, regionIndex]);
+
+  useEffect(() => {
+    setTempCountries(smallCountryList.slice(0, itemsPerPage));
+  }, [smallCountryList]);
 
   const showCountry = (tempCountries) => {
     var items = [];
@@ -75,6 +80,8 @@ function CountriesMap(props) {
       }
     }
   };
+
+  console.log(smallCountryList.length);
 
   return (
     <InfiniteScroll
