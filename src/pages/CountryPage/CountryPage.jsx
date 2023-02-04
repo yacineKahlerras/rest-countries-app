@@ -5,6 +5,7 @@ import backIcon from "@/assets/images/buttons/arrow-left.svg";
 import Loading from "./components/Loading";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { Skeleton } from "@mui/material";
+import LeafeletMap from "./components/LeafeletMap";
 
 export async function CountryPageLoader({ params }) {
   return params.countryName;
@@ -145,6 +146,8 @@ export default function CountryPage() {
           />
         </div>
       </div>
+
+      {country ? <LeafeletMap latlng={country.latlng} /> : ""}
 
       {/* loading component */}
       <Loading isLoading={isLoading} />
