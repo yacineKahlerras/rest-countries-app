@@ -3,7 +3,9 @@ const CountryElement = lazy(() => import("./CountryElement"));
 import InfiniteScroll from "react-infinite-scroller";
 import { nanoid } from "nanoid";
 import FilterDataContext from "@/utils/contexts/FilterDataContext";
-import { Oval } from "react-loader-spinner";
+import loading from "./Loading";
+import countriesFilter from "../methods/countriesFilter";
+import loadCountries from "../methods/loadCountries";
 
 function CountriesMap(props) {
   const { countriesList } = props;
@@ -11,16 +13,7 @@ function CountriesMap(props) {
     useContext(FilterDataContext);
   const searchReg = new RegExp(searchFilter, "i");
   const [smallCountryList, setSmallCountryList] = useState(
-    countriesList.filter((contr) => {
-      let pass = true;
-      if (regionIndex != null && contr.region != dropDownContent[regionIndex]) {
-        pass = false;
-      }
-      if (searchFilter != "" && !searchReg.test(contr.name.common)) {
-        pass = false;
-      }
-      return pass;
-    })
+    countriesFilter(countriesList, regionIndex, dropDownContent, searchFilter)
   );
   const itemsPerPage = 20;
   const [tempCountries, setTempCountries] = useState(
@@ -28,40 +21,10 @@ function CountriesMap(props) {
   );
   const [hasMore, setHasMore] = useState(true);
 
-  // loading elements while in suspence
-  const loading = (
-    <div key={nanoid()} className=" p-12 ">
-      <Oval
-        height={80}
-        width={80}
-        color="#4fa94d"
-        wrapperStyle={{}}
-        wrapperClass=""
-        visible={true}
-        ariaLabel="oval-loading"
-        secondaryColor="#4fa94d"
-        strokeWidth={2}
-        strokeWidthSecondary={2}
-      />
-    </div>
-  );
-
   useEffect(() => {
     setHasMore(true);
     setSmallCountryList(() =>
-      countriesList.filter((contr) => {
-        let pass = true;
-        if (
-          regionIndex != null &&
-          contr.region != dropDownContent[regionIndex]
-        ) {
-          pass = false;
-        }
-        if (searchFilter != "" && !searchReg.test(contr.name.common)) {
-          pass = false;
-        }
-        return pass;
-      })
+      countriesFilter(countriesList, regionIndex, dropDownContent, searchFilter)
     );
   }, [searchFilter, regionIndex]);
 
@@ -77,34 +40,20 @@ function CountriesMap(props) {
     return items;
   };
 
-  const loadCountries = () => {
-    if (tempCountries.length === smallCountryList.length) {
-      setHasMore(false);
-    } else {
-      const passedLimit =
-        tempCountries.length + itemsPerPage >= smallCountryList;
-
-      if (!passedLimit) {
-        setTempCountries(
-          tempCountries.concat(
-            smallCountryList.slice(
-              tempCountries.length,
-              tempCountries.length + itemsPerPage
-            )
-          )
-        );
-      } else {
-        setTempCountries(
-          tempCountries.concat(smallCountryList.slice(tempCountries.length))
-        );
-      }
-    }
-  };
+  function countriesLoader() {
+    loadCountries(
+      tempCountries,
+      setTempCountries,
+      smallCountryList,
+      setHasMore,
+      itemsPerPage
+    );
+  }
 
   return (
     <InfiniteScroll
       pageStart={0}
-      loadMore={loadCountries}
+      loadMore={countriesLoader}
       hasMore={hasMore}
       loader={loading}
       className="grid justify-center justify-items-center gap-5 grid-cols-countriesMap mx-auto pb-14"
