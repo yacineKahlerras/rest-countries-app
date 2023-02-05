@@ -11,10 +11,10 @@ function CountriesMap(props) {
   const { countriesList } = props;
   const { searchFilter, regionIndex, dropDownContent } =
     useContext(FilterDataContext);
-  const searchReg = new RegExp(searchFilter, "i");
   const [smallCountryList, setSmallCountryList] = useState(
     countriesFilter(countriesList, regionIndex, dropDownContent, searchFilter)
   );
+
   const itemsPerPage = 20;
   const [tempCountries, setTempCountries] = useState(
     smallCountryList.slice(0, itemsPerPage)
