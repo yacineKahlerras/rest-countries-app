@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import CountryName from "./CountryName";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { Skeleton } from "@mui/material";
+import numberWithCommas from "@/utils/methods/numberWithCommas";
 
 function CountryElement(props) {
   const { country } = props;
@@ -23,10 +24,6 @@ function CountryElement(props) {
       value: country.capital,
     },
   ];
-
-  function numberWithCommas(x) {
-    return x.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
-  }
 
   return (
     <Link to={`${baseUrl}${countryName}`} className={`w-full`}>
