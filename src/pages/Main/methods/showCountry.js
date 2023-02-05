@@ -1,5 +1,5 @@
-import { lazy } from "react";
-const CountryElement = lazy(() => import("./CountryElement"));
+import React, { lazy } from "react";
+const CountryElement = lazy(() => import("../components/CountryElement"));
 
 const showCountry = (tempCountries) => {
   var items = [];
