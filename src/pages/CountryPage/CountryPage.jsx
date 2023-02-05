@@ -48,10 +48,7 @@ export default function CountryPage() {
   return (
     <div className="w-[90%] max-w-md lg:max-w-6xl mx-auto capitalize py-14 relative">
       <BackBtn BackPage={BackPage} />
-      <div
-        className="grid justify-center lg:gap-5 lg:grid-cols-2 lg:justify-between mx-auto 
-        lg:text-left"
-      >
+      <div className="grid justify-center lg:gap-5 lg:grid-cols-2 lg:justify-between mx-auto lg:text-left">
         <CountryImage countryData={countryData} />
         <div className=" grid lg:grid-cols-2 grid-rows-[2.6em] gap-x-5">
           <CountryTitle countryData={countryData} />
