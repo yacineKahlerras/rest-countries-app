@@ -13,7 +13,7 @@ function CountryElement(props) {
   const infos = [
     {
       label: "population",
-      value: country.population,
+      value: numberWithCommas(country.population),
     },
     {
       label: "region",
@@ -24,6 +24,10 @@ function CountryElement(props) {
       value: country.capital,
     },
   ];
+
+  function numberWithCommas(x) {
+    return x.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+  }
 
   return (
     <Link to={`${baseUrl}${countryName}`} className={`w-full`}>

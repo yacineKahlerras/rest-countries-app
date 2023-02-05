@@ -21,7 +21,7 @@ export default function CountryPage() {
         "native name":
           country.name.nativeName[Object.keys(country.name.nativeName)[0]]
             .common,
-        population: country.population,
+        population: numberWithCommas(country.population),
         region: country.region,
         "sub region": country.subregion,
         capital: country.capital ? country.capital[0] : null,
@@ -67,6 +67,10 @@ export default function CountryPage() {
   function BackPage() {
     setIsLoading(true);
     navigate(-1);
+  }
+
+  function numberWithCommas(x) {
+    return x.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
   }
 
   return (
