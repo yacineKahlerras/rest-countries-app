@@ -8,6 +8,7 @@ import { labels1, labels2 } from "./data/infoLabels";
 import BackBtn from "./components/BackBtn";
 import CountryImage from "./components/CountryImage";
 import CountryInfo from "./components/CountryInfo";
+import CountryTitle from "./components/CountryTitle";
 
 export async function CountryPageLoader({ params }) {
   return params.countryName;
@@ -46,37 +47,16 @@ export default function CountryPage() {
 
   return (
     <div className="w-[90%] max-w-md lg:max-w-6xl mx-auto capitalize py-14 relative">
-      {/* back button */}
       <BackBtn BackPage={BackPage} />
-
-      {/* country section */}
       <div
         className="grid justify-center lg:gap-5 lg:grid-cols-2 lg:justify-between mx-auto 
         lg:text-left"
       >
         <CountryImage countryData={countryData} />
         <div className=" grid lg:grid-cols-2 grid-rows-[2.6em] gap-x-5">
-          {/* title */}
-          <h2 className="font-bold text-lg sm:text-2xl mb-4 lg:mb-5 sm:col-span-2 flex items-center gap-2 sm:gap-3">
-            {countryData.name}
-            {countryData.coatOfArms ? (
-              <img
-                src={countryData.coatOfArms}
-                alt="coat of arms"
-                className="max-w-[1.5rem] sm:max-w-[2rem]"
-              />
-            ) : (
-              ""
-            )}
-          </h2>
-
-          {/* part 1  */}
+          <CountryTitle countryData={countryData} />
           <CountryInfo labels={labels1} countryData={countryData} />
-
-          {/* part 2 */}
           <CountryInfo labels={labels2} countryData={countryData} />
-
-          {/* border countries  */}
           <BorderCountries
             countries={countries}
             currentCountry={country}
@@ -84,10 +64,7 @@ export default function CountryPage() {
           />
         </div>
       </div>
-
       {country ? <LeafeletMap latlng={country.latlng} /> : ""}
-
-      {/* loading component */}
       <Loading isLoading={isLoading} />
     </div>
   );
