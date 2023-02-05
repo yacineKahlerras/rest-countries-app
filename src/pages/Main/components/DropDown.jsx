@@ -20,7 +20,8 @@ function DropDown() {
   }
 
   return (
-    <div className="max-w-[12rem] min-w-[10.7rem] relative mb-5 sm:mb-0">
+    <div className="max-w-[12rem] min-w-[10.7rem] relative mb-5 sm:mb-0 z-20 isolate">
+      {/* drop down button */}
       <button
         onClick={dropDownToggle}
         data-dropdown-toggle="dropdown"
@@ -47,6 +48,7 @@ function DropDown() {
         </svg>
       </button>
 
+      {/* drop down content */}
       <div
         className={`z-10 w-full bg-White divide-y divide-gray-100 rounded-lg shadow 
         dark:bg-DarkBlue absolute top-[3em] ${activeDropDown ? "" : "hidden"}`}
@@ -76,6 +78,14 @@ function DropDown() {
           })}
         </ul>
       </div>
+
+      {/* close drop down overlay */}
+      <div
+        className={`fixed top-0 left-0 w-screen h-screen -z-10 ${
+          activeDropDown ? "" : "hidden"
+        }`}
+        onClick={dropDownToggle}
+      ></div>
     </div>
   );
 }

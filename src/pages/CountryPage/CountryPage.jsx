@@ -34,6 +34,7 @@ export default function CountryPage() {
           : "",
         "border countries": country.borders,
         flag: country.flags.svg,
+        coatOfArms: country.coatOfArms.svg,
       }
     : {};
   const labels1 = [
@@ -102,8 +103,17 @@ export default function CountryPage() {
         />
         <div className=" grid lg:grid-cols-2 grid-rows-[2.6em] gap-x-5">
           {/* title */}
-          <h2 className="font-bold text-lg sm:text-2xl mb-3 lg:mb-0 sm:col-span-2">
+          <h2 className="font-bold text-lg sm:text-2xl mb-4 lg:mb-5 sm:col-span-2 flex items-center gap-2 sm:gap-3">
             {countryData.name}
+            {countryData.coatOfArms ? (
+              <img
+                src={countryData.coatOfArms}
+                alt="coat of arms"
+                className="max-w-[1.5rem] sm:max-w-[2rem]"
+              />
+            ) : (
+              ""
+            )}
           </h2>
 
           {/* part 1  */}
