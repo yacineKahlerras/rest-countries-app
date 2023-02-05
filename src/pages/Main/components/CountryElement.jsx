@@ -1,6 +1,5 @@
-import FilterDataContext from "@/utils/contexts/FilterDataContext";
 import baseUrl from "@/utils/data/baseUrl";
-import React, { memo, useContext } from "react";
+import React, { memo } from "react";
 import { Link } from "react-router-dom";
 import CountryName from "./CountryName";
 import { LazyLoadImage } from "react-lazy-load-image-component";

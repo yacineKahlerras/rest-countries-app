@@ -62,11 +62,13 @@ export default function CountryPage() {
   useEffect(() => {
     if (countries != null) getCountryData();
     setIsLoading(false);
+    window.scrollTo(0, 0);
   }, [countryName]);
 
   function BackPage() {
     setIsLoading(true);
     navigate(-1);
+    window.scrollTo(0, 0);
   }
 
   function numberWithCommas(x) {
