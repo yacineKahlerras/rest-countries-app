@@ -1,11 +1,10 @@
-import React, { lazy, memo, useState, useEffect, useContext } from "react";
-const CountryElement = lazy(() => import("./CountryElement"));
+import React, { memo, useState, useEffect, useContext } from "react";
 import InfiniteScroll from "react-infinite-scroller";
-import { nanoid } from "nanoid";
 import FilterDataContext from "@/utils/contexts/FilterDataContext";
 import loading from "./Loading";
 import countriesFilter from "../methods/countriesFilter";
 import loadCountries from "../methods/loadCountries";
+import showCountry from "../methods/showCountry";
 
 function CountriesMap(props) {
   const { countriesList } = props;
@@ -31,14 +30,6 @@ function CountriesMap(props) {
   useEffect(() => {
     setTempCountries(smallCountryList.slice(0, itemsPerPage));
   }, [smallCountryList]);
-
-  const showCountry = (tempCountries) => {
-    var items = [];
-    for (var i = 0; i < tempCountries.length; i++) {
-      items.push(<CountryElement key={nanoid()} country={tempCountries[i]} />);
-    }
-    return items;
-  };
 
   function countriesLoader() {
     loadCountries(
