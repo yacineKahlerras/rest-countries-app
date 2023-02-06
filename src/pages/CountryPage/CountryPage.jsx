@@ -1,5 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { useLoaderData, useNavigate, useOutletContext } from "react-router-dom";
+import {
+  useLoaderData,
+  useNavigate,
+  useOutletContext,
+  useNavigationType,
+} from "react-router-dom";
 import BorderCountries from "./components/BorderCountries";
 import Loading from "./components/Loading";
 import LeafeletMap from "./components/LeafeletMap";
@@ -21,6 +26,9 @@ export default function CountryPage() {
   let countryData = getCountryDataInfo(country);
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
+  const type = useNavigationType();
+
+  console.log(type);
 
   function getCountryData() {
     for (let i = 0; i < countries.length; i++) {
