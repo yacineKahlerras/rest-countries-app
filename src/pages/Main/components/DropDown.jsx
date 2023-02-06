@@ -17,13 +17,11 @@ function DropDown() {
   useEffect(() => {
     const urlRegion = searchParams.get("region");
     if (urlRegion != null) {
-      setRegionIndex(() => {
-        setSearchParams((prev) => {
-          prev.set("region", urlRegion);
-          return prev;
-        });
-        return urlRegion;
+      setSearchParams((prev) => {
+        prev.set("region", urlRegion);
+        return prev;
       });
+      setRegionIndex(urlRegion);
     }
   }, []);
 
