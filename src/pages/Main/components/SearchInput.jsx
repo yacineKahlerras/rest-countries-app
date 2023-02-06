@@ -9,7 +9,10 @@ function SearchInput() {
 
   useEffect(() => {
     const urlSearch = searchParams.get("search");
-    if (urlSearch) searchBar.current.value = urlSearch;
+    if (urlSearch) {
+      searchBar.current.value = urlSearch;
+      setSearchFilter(urlSearch);
+    }
   }, []);
 
   function searchHandle(e) {
