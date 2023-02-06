@@ -1,18 +1,19 @@
 import React, { memo, useState, useEffect, useContext } from "react";
 import InfiniteScroll from "react-infinite-scroller";
 import FilterDataContext from "@/utils/contexts/FilterDataContext";
-import loading from "./Loading";
+import Loading from "./Loading";
 import countriesFilter from "../methods/countriesFilter";
 import loadCountries from "../methods/loadCountries";
-import showCountry from "../methods/showCountry";
+import CountryElement from "./CountryElement";
+import { nanoid } from "nanoid";
+import { Oval } from "react-loader-spinner";
+// import showCountry from "../methods/showCountry";
 
 function CountriesMap(props) {
   const { countriesList } = props;
   const { searchFilter, regionIndex, dropDownContent } =
     useContext(FilterDataContext);
-  const [smallCountryList, setSmallCountryList] = useState(
-    countriesFilter(countriesList, regionIndex, dropDownContent, searchFilter)
-  );
+  const [smallCountryList, setSmallCountryList] = useState(countriesList);
 
   const itemsPerPage = 20;
   const [tempCountries, setTempCountries] = useState(
@@ -41,12 +42,20 @@ function CountriesMap(props) {
     );
   }
 
+  const showCountry = (tempCountries) => {
+    var items = [];
+    for (var i = 0; i < tempCountries.length; i++) {
+      items.push(<CountryElement key={nanoid()} country={tempCountries[i]} />);
+    }
+    return items;
+  };
+
   return (
     <InfiniteScroll
       pageStart={0}
       loadMore={countriesLoader}
       hasMore={hasMore}
-      loader={loading}
+      loader={<Loading key={nanoid()} />}
       className="grid justify-center justify-items-center gap-5 grid-cols-countriesMap mx-auto pb-14"
     >
       {showCountry(tempCountries)}
