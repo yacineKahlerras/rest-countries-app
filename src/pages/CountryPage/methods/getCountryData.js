@@ -11,7 +11,7 @@ export default function getCountryDataInfo(country) {
         region: country.region,
         "sub region": country.subregion,
         capital: country.capital ? country.capital[0] : null,
-        "top level domain": country.tld[0],
+        "top level domain": country.tld ? country.tld[0] : "none",
         currencies: country.currencies
           ? country.currencies[Object.keys(country.currencies)[0]].name
           : [],
