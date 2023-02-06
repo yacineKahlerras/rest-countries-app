@@ -4,9 +4,8 @@ import FilterDataContext from "@/utils/contexts/FilterDataContext";
 import Loading from "./Loading";
 import countriesFilter from "../methods/countriesFilter";
 import loadCountries from "../methods/loadCountries";
-import CountryElement from "./CountryElement";
 import { nanoid } from "nanoid";
-// import showCountry from "../methods/showCountry";
+import ShowCountry from "../methods/ShowCountry";
 
 function CountriesMap(props) {
   const { countriesList } = props;
@@ -41,14 +40,6 @@ function CountriesMap(props) {
     );
   }
 
-  const showCountry = (tempCountries) => {
-    var items = [];
-    for (var i = 0; i < tempCountries.length; i++) {
-      items.push(<CountryElement key={nanoid()} country={tempCountries[i]} />);
-    }
-    return items;
-  };
-
   return (
     <InfiniteScroll
       pageStart={0}
@@ -58,7 +49,7 @@ function CountriesMap(props) {
       threshold={500}
       className="grid justify-center justify-items-center gap-5 grid-cols-countriesMap mx-auto pb-14"
     >
-      {showCountry(tempCountries)}
+      <ShowCountry tempCountries={tempCountries} />
     </InfiniteScroll>
   );
 }
