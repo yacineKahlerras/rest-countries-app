@@ -6,7 +6,6 @@ import countriesFilter from "../methods/countriesFilter";
 import loadCountries from "../methods/loadCountries";
 import CountryElement from "./CountryElement";
 import { nanoid } from "nanoid";
-import { Oval } from "react-loader-spinner";
 // import showCountry from "../methods/showCountry";
 
 function CountriesMap(props) {
@@ -56,6 +55,7 @@ function CountriesMap(props) {
       loadMore={countriesLoader}
       hasMore={hasMore}
       loader={<Loading key={nanoid()} />}
+      threshold={500}
       className="grid justify-center justify-items-center gap-5 grid-cols-countriesMap mx-auto pb-14"
     >
       {showCountry(tempCountries)}
