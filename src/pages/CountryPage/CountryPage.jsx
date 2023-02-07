@@ -1,10 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {
-  useLoaderData,
-  useNavigate,
-  useOutletContext,
-  useNavigationType,
-} from "react-router-dom";
+import { useLoaderData, useOutletContext } from "react-router-dom";
 import BorderCountries from "./components/BorderCountries";
 import Loading from "./components/Loading";
 import LeafeletMap from "./components/LeafeletMap";
@@ -38,9 +33,9 @@ export default function CountryPage() {
   }, [countries]);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     if (countries != null) getCountryData();
     setIsLoading(false);
-    window.scrollTo(0, 0);
   }, [countryName]);
 
   return (
