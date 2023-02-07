@@ -33,10 +33,11 @@ export default function CountryPage() {
   }, [countries]);
 
   useEffect(() => {
-    window.scrollTo(0, 0);
     if (countries != null) getCountryData();
     setIsLoading(false);
   }, [countryName]);
+
+  window.scrollTo(0, 0);
 
   return (
     <div className="w-[90%] max-w-md lg:max-w-6xl mx-auto capitalize py-14 relative">
