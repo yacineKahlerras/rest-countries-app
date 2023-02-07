@@ -31,6 +31,7 @@ function CountriesMap(props) {
   }, [smallCountryList]);
 
   function countriesLoader() {
+    console.log("yayayayayay", tempCountries.length, smallCountryList.length);
     loadCountries(
       tempCountries,
       setTempCountries,

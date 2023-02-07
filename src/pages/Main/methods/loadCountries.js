@@ -8,7 +8,8 @@ const loadCountries = (
   if (tempCountries.length === smallCountryList.length) {
     setHasMore(false);
   } else {
-    const passedLimit = tempCountries.length + itemsPerPage >= smallCountryList;
+    const passedLimit =
+      tempCountries.length + itemsPerPage >= smallCountryList.length;
 
     if (!passedLimit) {
       setTempCountries(
