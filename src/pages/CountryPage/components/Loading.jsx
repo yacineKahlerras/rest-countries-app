@@ -3,7 +3,6 @@ import { Oval } from "react-loader-spinner";
 
 export default function Loading(props) {
   let { isLoading } = props;
-  //   isLoading = true;
 
   return (
     <div
