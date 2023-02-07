@@ -24,11 +24,7 @@ export default function CountryPage() {
   const [countries] = useOutletContext();
   const [country, setCountry] = useState();
   let countryData = getCountryDataInfo(country);
-  const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
-  const type = useNavigationType();
-
-  console.log(type);
 
   function getCountryData() {
     for (let i = 0; i < countries.length; i++) {
@@ -47,15 +43,9 @@ export default function CountryPage() {
     window.scrollTo(0, 0);
   }, [countryName]);
 
-  function BackPage() {
-    setIsLoading(true);
-    navigate(-1);
-    window.scrollTo(0, 0);
-  }
-
   return (
     <div className="w-[90%] max-w-md lg:max-w-6xl mx-auto capitalize py-14 relative">
-      <BackBtn BackPage={BackPage} />
+      <BackBtn setIsLoading={setIsLoading} />
       <div className="grid justify-center lg:gap-5 lg:grid-cols-2 lg:justify-between mx-auto lg:text-left">
         <CountryImage countryData={countryData} />
         <div className=" grid lg:grid-cols-2 grid-rows-[2.6em] gap-x-5">

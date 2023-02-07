@@ -3,15 +3,18 @@ import React, { memo, useContext, useEffect, useRef } from "react";
 import { useSearchParams } from "react-router-dom";
 
 function SearchInput() {
-  const { setSearchFilter } = useContext(FilterDataContext);
-  let [searchParams, setSearchParams] = useSearchParams();
+  const { searchFilter, setSearchFilter } = useContext(FilterDataContext);
+  let [_, setSearchParams] = useSearchParams();
   const searchBar = useRef();
 
   useEffect(() => {
-    const urlSearch = searchParams.get("search");
-    if (urlSearch) {
-      searchBar.current.value = urlSearch;
-      setSearchFilter(urlSearch);
+    if (searchFilter) {
+      searchBar.current.value = searchFilter;
+      setSearchParams((prev) => {
+        console.log("bip bip ", searchFilter);
+        prev.set("search", searchFilter);
+        return prev;
+      });
     }
   }, []);
 

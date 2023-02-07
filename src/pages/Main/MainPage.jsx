@@ -1,7 +1,6 @@
-import React, { useState, Suspense, lazy } from "react";
+import React, { Suspense, lazy } from "react";
 import DropDown from "./components/DropDown";
 import SearchInput from "./components/SearchInput";
-import FilterDataContext from "@/utils/contexts/FilterDataContext";
 import { useOutletContext } from "react-router-dom";
 import { Oval } from "react-loader-spinner";
 const CountriesMap = lazy(() => import("./components/CountriesMap"));

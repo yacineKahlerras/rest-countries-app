@@ -1,8 +1,22 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import backIcon from "@/assets/images/buttons/arrow-left.svg";
+import { useLocation, useNavigate } from "react-router-dom";
+import FilterDataContext from "@/utils/contexts/FilterDataContext";
+import baseUrl from "@/utils/data/baseUrl";
 
 export default function BackBtn(props) {
-  const { BackPage } = props;
+  const { setIsLoading } = props;
+  const location = useLocation();
+  const [firstPath] = useState(location.pathname);
+  const navigate = useNavigate();
+  const isFirstPage = firstPath == location.pathname;
+
+  function BackPage() {
+    setIsLoading(true);
+    window.scrollTo(0, 0);
+    if (!isFirstPage) navigate(-1);
+    else navigate(baseUrl);
+  }
 
   return (
     <button
