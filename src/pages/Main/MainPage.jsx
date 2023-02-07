@@ -1,12 +1,27 @@
-import React, { Suspense, lazy } from "react";
+import React, { Suspense, lazy, useEffect, useContext } from "react";
 import DropDown from "./components/DropDown";
 import SearchInput from "./components/SearchInput";
-import { useOutletContext } from "react-router-dom";
+import { useOutletContext, useSearchParams } from "react-router-dom";
 import { Oval } from "react-loader-spinner";
+import FilterDataContext from "@/utils/contexts/FilterDataContext";
 const CountriesMap = lazy(() => import("./components/CountriesMap"));
 
 function MainPage() {
   const [countries] = useOutletContext();
+  const { regionIndex, searchFilter } = useContext(FilterDataContext);
+  let [_, setSearchParams] = useSearchParams();
+
+  useEffect(() => {
+    setSearchParams((prev) => {
+      if (searchFilter) {
+        prev.set("search", searchFilter);
+      } else prev.delete("search");
+      if (regionIndex != undefined) {
+        prev.set("region", regionIndex);
+      } else prev.delete("region");
+      return prev;
+    });
+  }, []);
 
   return (
     <div className="pt-8 px-5 max-w-7xl mx-auto">

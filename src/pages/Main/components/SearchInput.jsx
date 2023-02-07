@@ -10,11 +10,6 @@ function SearchInput() {
   useEffect(() => {
     if (searchFilter) {
       searchBar.current.value = searchFilter;
-      setSearchParams((prev) => {
-        console.log("bip bip ", searchFilter);
-        prev.set("search", searchFilter);
-        return prev;
-      });
     }
   }, []);
 

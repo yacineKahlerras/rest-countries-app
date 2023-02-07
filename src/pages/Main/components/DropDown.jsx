@@ -1,5 +1,5 @@
 import FilterDataContext from "@/utils/contexts/FilterDataContext";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 
 function DropDown() {
@@ -13,15 +13,6 @@ function DropDown() {
   function dropDownToggle() {
     setActiveDropDown((oldValue) => !oldValue);
   }
-
-  useEffect(() => {
-    if (regionIndex != null) {
-      setSearchParams((prev) => {
-        prev.set("region", regionIndex);
-        return prev;
-      });
-    }
-  }, []);
 
   function regionFilter(index) {
     setRegionIndex((oldValue) => {
