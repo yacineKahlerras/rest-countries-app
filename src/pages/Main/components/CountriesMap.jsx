@@ -12,7 +12,6 @@ function CountriesMap(props) {
   const { searchFilter, regionIndex, dropDownContent } =
     useContext(FilterDataContext);
   const [smallCountryList, setSmallCountryList] = useState(countriesList);
-
   const itemsPerPage = 20;
   const [tempCountries, setTempCountries] = useState(
     smallCountryList.slice(0, itemsPerPage)
@@ -27,11 +26,14 @@ function CountriesMap(props) {
   }, [searchFilter, regionIndex]);
 
   useEffect(() => {
-    setTempCountries(smallCountryList.slice(0, itemsPerPage));
+    if (smallCountryList.length > itemsPerPage)
+      setTempCountries(smallCountryList.slice(0, itemsPerPage));
+    else {
+      setTempCountries(smallCountryList);
+    }
   }, [smallCountryList]);
 
   function countriesLoader() {
-    console.log("yayayayayay", tempCountries.length, smallCountryList.length);
     loadCountries(
       tempCountries,
       setTempCountries,

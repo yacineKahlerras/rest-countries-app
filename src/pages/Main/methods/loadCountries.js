@@ -5,7 +5,10 @@ const loadCountries = (
   setHasMore,
   itemsPerPage
 ) => {
-  if (tempCountries.length === smallCountryList.length) {
+  if (
+    tempCountries.length === smallCountryList.length ||
+    tempCountries.length > smallCountryList.length
+  ) {
     setHasMore(false);
   } else {
     const passedLimit =
