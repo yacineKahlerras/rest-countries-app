@@ -43,7 +43,7 @@ export default function CountryPage() {
     <div className="w-[90%] max-w-md lg:max-w-6xl mx-auto capitalize py-14 relative">
       <BackBtn setIsLoading={setIsLoading} />
       <div className="grid justify-center lg:gap-5 lg:grid-cols-2 lg:justify-between mx-auto lg:text-left">
-        <CountryImage countryData={countryData} />
+        <CountryImage flag={countryData.flag} />
         <div className=" grid lg:grid-cols-2 grid-rows-[2.6em] gap-x-5">
           <CountryTitle countryData={countryData} />
           <CountryInfo labels={labels1} countryData={countryData} />

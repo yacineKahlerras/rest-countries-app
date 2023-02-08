@@ -1,5 +1,5 @@
-import React, { memo, useEffect } from "react";
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import React, { memo } from "react";
+import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import markerIconPng from "leaflet/dist/images/marker-icon.png";
 import { Icon } from "leaflet";
@@ -7,6 +7,12 @@ import { Icon } from "leaflet";
 function LeafeletMap(props) {
   const { latlng } = props;
   const zoom = 4;
+
+  function ChangeView({ center, zoom }) {
+    const map = useMap();
+    map.setView(center, zoom);
+    return null;
+  }
 
   return (
     <div
@@ -22,6 +28,7 @@ function LeafeletMap(props) {
         zoom={zoom}
         scrollWheelZoom={true}
       >
+        <ChangeView center={latlng} zoom={zoom} />
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
