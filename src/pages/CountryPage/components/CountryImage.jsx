@@ -1,7 +1,7 @@
 import { Skeleton } from "@mui/material";
-import React, { useEffect, useState } from "react";
+import React, { memo, useEffect, useState } from "react";
 
-export default function CountryImage(props) {
+function CountryImage(props) {
   const { flag } = props;
   const [imgLoaded, setImgLoaded] = useState(false);
 
@@ -36,3 +36,5 @@ export default function CountryImage(props) {
     </div>
   );
 }
+
+export default memo(CountryImage);

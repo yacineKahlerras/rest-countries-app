@@ -1,7 +1,7 @@
 import { Skeleton } from "@mui/material";
-import React, { useEffect, useState } from "react";
+import React, { memo, useEffect, useState } from "react";
 
-export default function CountryTitle(props) {
+function CountryTitle(props) {
   const { name, coatOfArms } = props;
   const [imgLoaded, setImgLoaded] = useState(false);
 
@@ -43,3 +43,5 @@ export default function CountryTitle(props) {
     </h2>
   );
 }
+
+export default memo(CountryTitle);
