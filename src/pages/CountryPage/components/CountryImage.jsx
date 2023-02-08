@@ -14,12 +14,12 @@ export default function CountryImage(props) {
   }, [flag]);
 
   return (
-    <div>
+    <div className="mb-5">
       <img
         src={flag}
         alt="country flag"
         onLoad={onLoadHandle}
-        className={`mb-5 w-full max-h-60 max-w-md drop-shadow-lg ${
+        className={`w-full max-h-60 max-w-md drop-shadow-lg ${
           imgLoaded ? " block " : "hidden"
         }`}
       />

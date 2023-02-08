@@ -45,7 +45,10 @@ export default function CountryPage() {
       <div className="grid justify-center lg:gap-5 lg:grid-cols-2 lg:justify-between mx-auto lg:text-left">
         <CountryImage flag={countryData.flag} />
         <div className=" grid lg:grid-cols-2 grid-rows-[2.6em] gap-x-5">
-          <CountryTitle countryData={countryData} />
+          <CountryTitle
+            name={countryData.name}
+            coatOfArms={countryData.coatOfArms}
+          />
           <CountryInfo labels={labels1} countryData={countryData} />
           <CountryInfo labels={labels2} countryData={countryData} />
           <BorderCountries
