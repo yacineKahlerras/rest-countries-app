@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { memo, useContext } from "react";
 import sunIcon from "@/assets/images/darkTheme/brightness-low-fill.svg";
 import moonIcon from "@/assets/images/darkTheme/moon-fill.svg";
 import DarkThemeContext from "@/utils/contexts/DarkThemeContext";
@@ -31,4 +31,4 @@ function Nav() {
   );
 }
 
-export default Nav;
+export default memo(Nav);

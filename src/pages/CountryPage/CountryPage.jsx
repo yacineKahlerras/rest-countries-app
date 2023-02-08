@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { memo, useEffect, useState } from "react";
 import { useLoaderData, useOutletContext } from "react-router-dom";
 import BorderCountries from "./components/BorderCountries";
 import Loading from "./components/Loading";
@@ -14,7 +14,7 @@ export async function CountryPageLoader({ params }) {
   return params.countryName;
 }
 
-export default function CountryPage() {
+function CountryPage() {
   const countryName = useLoaderData().replace(/_+/g, " ").toLowerCase();
   const [countries] = useOutletContext();
   const [country, setCountry] = useState();
@@ -43,7 +43,7 @@ export default function CountryPage() {
     <div className="w-[90%] max-w-md lg:max-w-6xl mx-auto capitalize py-14 relative">
       <BackBtn setIsLoading={setIsLoading} />
       <div className="grid justify-center lg:gap-5 lg:grid-cols-2 lg:justify-between mx-auto lg:text-left">
-        <CountryImage flag={countryData.flag} />
+        <CountryImage flag={countryData.flag} countryName={countryName} />
         <div className=" grid lg:grid-cols-2 grid-rows-[2.6em] gap-x-5">
           <CountryTitle
             name={countryData.name}
@@ -63,3 +63,5 @@ export default function CountryPage() {
     </div>
   );
 }
+
+export default memo(CountryPage);

@@ -2,16 +2,16 @@ import { Skeleton } from "@mui/material";
 import React, { memo, useEffect, useState } from "react";
 
 function CountryImage(props) {
-  const { flag } = props;
+  const { flag, countryName } = props;
   const [imgLoaded, setImgLoaded] = useState(false);
+
+  useEffect(() => {
+    setImgLoaded(false);
+  }, [countryName]);
 
   function onLoadHandle() {
     setImgLoaded(true);
   }
-
-  useEffect(() => {
-    setImgLoaded(false);
-  }, [flag]);
 
   return (
     <div className="mb-5">
@@ -20,7 +20,7 @@ function CountryImage(props) {
         alt="country flag"
         onLoad={onLoadHandle}
         className={`w-full max-h-60 max-w-md drop-shadow-lg ${
-          imgLoaded ? " block " : "hidden"
+          imgLoaded ? "block" : "hidden"
         }`}
       />
       <Skeleton
