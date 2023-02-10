@@ -11,6 +11,7 @@ function MainPage() {
   const { regionIndex, searchFilter } = useContext(FilterDataContext);
   let [_, setSearchParams] = useSearchParams();
 
+  // sets the url search params based on region and search filters
   useEffect(() => {
     setSearchParams((prev) => {
       if (searchFilter) {

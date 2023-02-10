@@ -11,33 +11,34 @@ function CountriesMap(props) {
   const { countriesList } = props;
   const { searchFilter, regionIndex, dropDownContent } =
     useContext(FilterDataContext);
-  const [smallCountryList, setSmallCountryList] = useState(countriesList);
+  const [filteredCountryList, setFilteredCountryList] = useState(countriesList);
   const itemsPerPage = 20;
-  const [tempCountries, setTempCountries] = useState(
-    smallCountryList.slice(0, itemsPerPage)
+  const [infiniteScrollList, setInfiniteScrollList] = useState(
+    filteredCountryList.slice(0, itemsPerPage)
   );
-  const [hasMore, setHasMore] = useState(true);
+  const [hasMore, setHasMore] = useState(true); // if there is more countries to show in infinite scroll
 
   useEffect(() => {
     setHasMore(true);
-    setSmallCountryList(() =>
+    setFilteredCountryList(() =>
       countriesFilter(countriesList, regionIndex, dropDownContent, searchFilter)
     );
   }, [searchFilter, regionIndex]);
 
   useEffect(() => {
-    if (smallCountryList.length > itemsPerPage)
-      setTempCountries(smallCountryList.slice(0, itemsPerPage));
+    if (filteredCountryList.length > itemsPerPage)
+      setInfiniteScrollList(filteredCountryList.slice(0, itemsPerPage));
     else {
-      setTempCountries(smallCountryList);
+      setInfiniteScrollList(filteredCountryList);
     }
-  }, [smallCountryList]);
+  }, [filteredCountryList]);
 
+  // updates the infiniteScrollList to show more items
   function countriesLoader() {
     loadCountries(
-      tempCountries,
-      setTempCountries,
-      smallCountryList,
+      infiniteScrollList,
+      setInfiniteScrollList,
+      filteredCountryList,
       setHasMore,
       itemsPerPage
     );
@@ -52,7 +53,7 @@ function CountriesMap(props) {
       threshold={500}
       className="grid justify-center justify-items-center gap-5 grid-cols-countriesMap mx-auto pb-14"
     >
-      <ShowCountry tempCountries={tempCountries} />
+      <ShowCountry infiniteScrollList={infiniteScrollList} />
     </InfiniteScroll>
   );
 }

@@ -5,6 +5,8 @@ function CountryName(props) {
   const { country } = props;
   const { searchFilter } = useContext(FilterDataContext);
 
+  // this is needed for highlighting the parts of the
+  // country name that matches with the search
   function NamePieces(str, match) {
     str = str.toLowerCase();
     match = match.toLowerCase();

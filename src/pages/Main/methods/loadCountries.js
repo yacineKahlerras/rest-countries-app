@@ -1,3 +1,4 @@
+// if there is more to show then add more items to the infinite scroll list
 const loadCountries = (
   tempCountries,
   setTempCountries,

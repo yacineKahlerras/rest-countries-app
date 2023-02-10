@@ -13,6 +13,7 @@ function SearchInput() {
     }
   }, []);
 
+  // input change handler
   function searchHandle(e) {
     setSearchFilter(e.target.value);
     setSearchParams((prev) => {

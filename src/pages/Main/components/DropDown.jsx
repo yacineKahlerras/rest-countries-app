@@ -8,12 +8,13 @@ function DropDown() {
   const [activeDropDown, setActiveDropDown] = useState(false);
   const dropDownText =
     regionIndex != null ? dropDownContent[regionIndex] : "Filter by region";
-  let [searchParams, setSearchParams] = useSearchParams();
+  let [, setSearchParams] = useSearchParams();
 
   function dropDownToggle() {
     setActiveDropDown((oldValue) => !oldValue);
   }
 
+  // region change handler
   function regionFilter(index) {
     setRegionIndex((oldValue) => {
       const isActive = oldValue == index;
