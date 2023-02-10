@@ -13,6 +13,7 @@ function CountryTitle(props) {
     setImgLoaded(false);
   }, [coatOfArms]);
 
+  // the coat of arms image and its loading effect
   function Emblem() {
     return (
       <div className={`max-w-[1.5rem] sm:max-w-[2rem]`}>
