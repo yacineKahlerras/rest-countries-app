@@ -27,6 +27,12 @@ export default function NavSignIn() {
     />
   );
 
+  const userProfileElement = (
+    <div>
+      <img src="" alt="" />
+    </div>
+  );
+
   return (
     <div className="relative">
       {isLoadingUser ? loadingAnimation : signInButton}
