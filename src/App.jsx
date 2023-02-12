@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Nav from "@/components/Nav/Nav";
-import DarkThemeContext from "./utils/contexts/DarkThemeContext";
+import NavBarData from "./utils/contexts/DarkThemeContext";
 import { Outlet } from "react-router-dom";
 import axios from "axios";
 import FilterDataContext from "./utils/contexts/FilterDataContext";
@@ -13,9 +13,10 @@ function App() {
   const [searchFilter, setSearchFilter] = useState("");
   const dropDownContent = ["Africa", "Americas", "Asia", "Europe", "Oceania"];
   const [user, setUser] = useState(null);
+  const [isLoadingUser, setIsLoadingUser] = useState(false);
 
   async function googleStuff() {
-    getRedirect(setUser);
+    getRedirect(setUser, setIsLoadingUser);
   }
 
   useEffect(() => {
@@ -29,6 +30,16 @@ function App() {
     dropDownContent,
     searchFilter,
     setSearchFilter,
+  };
+
+  // nav bar data
+  const navBarObject = {
+    darkTheme: darkTheme,
+    setDarkTheme: setDarkTheme,
+    isLoadingUser: isLoadingUser,
+    setIsLoadingUser: setIsLoadingUser,
+    user: user,
+    setUser: setUser,
   };
 
   // fetching countries list
@@ -49,11 +60,9 @@ function App() {
       className="min-h-screen text-sm bg-VeryLightGray dark:bg-VeryDarkBlue text-VeryDarkBlue 
     dark:text-White sm:text-base"
     >
-      <DarkThemeContext.Provider
-        value={{ darkTheme: darkTheme, setDarkTheme: setDarkTheme }}
-      >
+      <NavBarData.Provider value={navBarObject}>
         <Nav />
-      </DarkThemeContext.Provider>
+      </NavBarData.Provider>
       <FilterDataContext.Provider value={filterData}>
         <Outlet context={[countries]} />
       </FilterDataContext.Provider>

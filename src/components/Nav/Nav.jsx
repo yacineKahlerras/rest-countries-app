@@ -1,13 +1,14 @@
 import React, { memo, useContext } from "react";
 import sunIcon from "@/assets/images/darkTheme/brightness-low-fill.svg";
 import moonIcon from "@/assets/images/darkTheme/moon-fill.svg";
-import DarkThemeContext from "@/utils/contexts/DarkThemeContext";
+import NavBarData from "@/utils/contexts/DarkThemeContext";
 import { Link } from "react-router-dom";
 import baseUrl from "@/utils/data/baseUrl";
 import signIn from "@/firebase/googleSignInRedirect";
+import NavSignIn from "./components/NavSignIn";
 
 function Nav() {
-  const { darkTheme, setDarkTheme } = useContext(DarkThemeContext);
+  const { darkTheme, setDarkTheme } = useContext(NavBarData);
 
   function toggleTheme() {
     setDarkTheme((oldValue) => !oldValue);
@@ -20,7 +21,7 @@ function Nav() {
           <h1>Where is the world ?</h1>
         </Link>
         <div className="flex gap-5">
-          <button onClick={signIn}>Sign In</button>
+          <NavSignIn />
           <button onClick={toggleTheme} className="flex gap-1 items-center">
             <img
               src={darkTheme ? sunIcon : moonIcon}

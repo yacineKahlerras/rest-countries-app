@@ -1,5 +1,5 @@
 import { createContext } from "react";
 
-const DarkThemeContext = createContext();
+const NavBarData = createContext();
 
-export default DarkThemeContext;
+export default NavBarData;
