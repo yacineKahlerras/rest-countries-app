@@ -4,8 +4,7 @@ import DarkThemeContext from "./utils/contexts/DarkThemeContext";
 import { Outlet } from "react-router-dom";
 import axios from "axios";
 import FilterDataContext from "./utils/contexts/FilterDataContext";
-import { db } from "./firebase/firebase-config";
-import { addDoc, collection } from "firebase/firestore";
+import getRedirect from "./firebase/googleSignInRedirectResult";
 
 function App() {
   const [darkTheme, setDarkTheme] = useState(true);
@@ -13,23 +12,15 @@ function App() {
   const [regionIndex, setRegionIndex] = useState();
   const [searchFilter, setSearchFilter] = useState("");
   const dropDownContent = ["Africa", "Americas", "Asia", "Europe", "Oceania"];
+  const [user, setUser] = useState(null);
 
-  async function addData() {
-    try {
-      const docRef = await addDoc(collection(db, "users"), {
-        first: "Ada",
-        last: "Lovelace",
-        born: 1815,
-      });
-      console.log("Document written with ID: ", docRef.id);
-    } catch (e) {
-      console.error("Error adding document: ", e);
-    }
+  async function googleStuff() {
+    getRedirect(setUser);
+    // if (user == null) signIn();
   }
 
-  // firebase
   useEffect(() => {
-    // addData();
+    googleStuff();
   }, []);
 
   // data states for filtering the countries
