@@ -37,9 +37,7 @@ function App() {
     darkTheme: darkTheme,
     setDarkTheme: setDarkTheme,
     isLoadingUser: isLoadingUser,
-    setIsLoadingUser: setIsLoadingUser,
     user: user,
-    setUser: setUser,
   };
 
   // fetching countries list

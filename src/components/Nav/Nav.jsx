@@ -4,7 +4,6 @@ import moonIcon from "@/assets/images/darkTheme/moon-fill.svg";
 import NavBarData from "@/utils/contexts/DarkThemeContext";
 import { Link } from "react-router-dom";
 import baseUrl from "@/utils/data/baseUrl";
-import signIn from "@/firebase/googleSignInRedirect";
 import NavSignIn from "./components/NavSignIn";
 
 function Nav() {
