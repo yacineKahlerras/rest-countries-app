@@ -6,12 +6,10 @@ export default function getRedirect(setUser, setIsLoadingUser) {
   getRedirectResult(auth)
     .then((result) => {
       const user = result.user;
-      console.log(user.email);
       setUser(user);
       setIsLoadingUser(false);
     })
     .catch((error) => {
-      console.log("error during redirect : ", error);
       setIsLoadingUser(false);
     });
 }
