@@ -16,7 +16,6 @@ function App() {
 
   async function googleStuff() {
     getRedirect(setUser);
-    // if (user == null) signIn();
   }
 
   useEffect(() => {
