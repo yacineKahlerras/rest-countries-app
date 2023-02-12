@@ -5,6 +5,8 @@ import { Outlet } from "react-router-dom";
 import axios from "axios";
 import FilterDataContext from "./utils/contexts/FilterDataContext";
 import getRedirect from "./firebase/googleSignInRedirectResult";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "./firebase/auth";
 
 function App() {
   const [darkTheme, setDarkTheme] = useState(true);
@@ -31,6 +33,18 @@ function App() {
     searchFilter,
     setSearchFilter,
   };
+
+  // listens to authentification state change and updates the user state
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      if (!currentUser) {
+        setUser(null);
+      }
+    });
+    return () => {
+      unsubscribe();
+    };
+  }, []);
 
   // nav bar data
   const navBarObject = {
