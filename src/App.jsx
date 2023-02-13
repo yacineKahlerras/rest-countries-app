@@ -17,12 +17,8 @@ function App() {
   const [user, setUser] = useState(null);
   const [isLoadingUser, setIsLoadingUser] = useState(false);
 
-  async function googleStuff() {
-    getRedirect(setUser, setIsLoadingUser);
-  }
-
   useEffect(() => {
-    googleStuff();
+    getRedirect(setUser, setIsLoadingUser);
   }, []);
 
   // data states for filtering the countries
