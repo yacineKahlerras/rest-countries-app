@@ -17,6 +17,7 @@ function App() {
   const [user, setUser] = useState(null);
   const [isLoadingUser, setIsLoadingUser] = useState(false);
 
+  // getting google sign in redirect result
   useEffect(() => {
     getRedirect(setUser, setIsLoadingUser);
   }, []);
