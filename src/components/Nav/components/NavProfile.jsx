@@ -30,9 +30,7 @@ export default function NavProfile(props) {
         {profileDropDown}
       </button>
       <div
-        className={` fixed w-full h-screen top-0 left-0 -z-10 ${
-          dropDownActive ? "" : "hidden"
-        } `}
+        className={` fixed w-full h-screen top-0 left-0 -z-10 ${dropDownVisible} `}
         onClick={toggleProfileDropdown}
       ></div>
     </div>
