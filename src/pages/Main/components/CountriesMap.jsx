@@ -6,7 +6,7 @@ import countriesFilter from "../methods/countriesFilter";
 import loadCountries from "../methods/loadCountries";
 import { nanoid } from "nanoid";
 import ShowCountry from "../methods/ShowCountry";
-import sendUserData from "@/firebase/firestore/sendUserData";
+import updateUserFavorites from "@/firebase/firestore/updateUserFavorites";
 import getUserData from "@/firebase/firestore/getUserData";
 
 function CountriesMap(props) {
@@ -51,8 +51,8 @@ function CountriesMap(props) {
   useEffect(() => {
     if (user && (!userRef.current || userRef.current.uid != user.uid)) {
       userRef.current = user;
-      sendUserData(user.uid);
-      getUserData(user.uid);
+      // updateUserFavorites(user.uid, "United Arab Emirates", false);
+      // getUserData(user.uid);
     }
   }, [user]);
 
