@@ -4,6 +4,7 @@ import React, { useContext } from "react";
 function CountryName(props) {
   const { country } = props;
   const { searchFilter } = useContext(FilterDataContext);
+  const isFavoriteText = country.isFavorite ? "YOUPIII" : "";
 
   // this is needed for highlighting the parts of the
   // country name that matches with the search
@@ -30,7 +31,7 @@ function CountryName(props) {
   return (
     <h2 className="font-bold text-lg mb-3">
       {searchFilter == ""
-        ? country.name.common
+        ? country.name.common + isFavoriteText
         : NamePieces(country.name.common, searchFilter).map((piece, index) => {
             if (piece == searchFilter)
               return (

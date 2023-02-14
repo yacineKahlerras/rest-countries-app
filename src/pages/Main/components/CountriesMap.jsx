@@ -20,6 +20,7 @@ function CountriesMap(props) {
   );
   const [hasMore, setHasMore] = useState(true); // if there is more countries to show in infinite scroll
   const userRef = useRef(null);
+  const [favoriteCountries, setFavoriteCountries] = useState(null);
 
   useEffect(() => {
     setHasMore(true);
@@ -51,10 +52,12 @@ function CountriesMap(props) {
   useEffect(() => {
     if (user && (!userRef.current || userRef.current.uid != user.uid)) {
       userRef.current = user;
-      // updateUserFavorites(user.uid, "United Arab Emirates", false);
-      // getUserData(user.uid);
+      // updateUserFavorites(user.uid, "Benin", true);
+      getUserData(user.uid, setFavoriteCountries);
     }
   }, [user]);
+
+  console.log(favoriteCountries);
 
   return (
     <InfiniteScroll
@@ -65,7 +68,10 @@ function CountriesMap(props) {
       threshold={500}
       className="grid justify-center justify-items-center gap-5 grid-cols-countriesMap mx-auto pb-14"
     >
-      <ShowCountry infiniteScrollList={infiniteScrollList} />
+      <ShowCountry
+        infiniteScrollList={infiniteScrollList}
+        favoriteCountries={favoriteCountries}
+      />
     </InfiniteScroll>
   );
 }
