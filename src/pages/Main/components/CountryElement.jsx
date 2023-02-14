@@ -5,9 +5,8 @@ import CountryName from "./CountryName";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { Skeleton } from "@mui/material";
 import numberWithCommas from "@/utils/methods/numberWithCommas";
-import heartFull from "@/assets/images/favorite/heart-fill.svg";
-import heartEmpty from "@/assets/images/favorite/heart.svg";
 import FilterDataContext from "@/utils/contexts/FilterDataContext";
+import FavoriteButton from "./FavoriteButton";
 
 function CountryElement(props) {
   const { country } = props;
@@ -30,23 +29,12 @@ function CountryElement(props) {
     },
   ];
 
-  const favoriteIcon = user ? (
-    <button className="min-w-[2em] absolute bottom-5 right-7">
-      <img
-        className="dark:invert w-full"
-        src={isFavorite ? heartFull : heartEmpty}
-        alt="favorite icon"
-      />
-    </button>
-  ) : (
-    ""
-  );
-
   return (
     <div
       className={`max-w-xs w-full relative bg-White  dark:bg-DarkBlue 
       overflow-hidden rounded-md capitalize drop-shadow-xl shadow-DarkBlue`}
     >
+      {/* clickable country element */}
       <Link to={`${baseUrl}${countryName}`} className={`w-full`}>
         <div className="h-[12rem] relative">
           <LazyLoadImage
@@ -78,7 +66,9 @@ function CountryElement(props) {
           })}
         </div>
       </Link>
-      {favoriteIcon}
+
+      {/* favorite country button */}
+      <FavoriteButton user={user} isFavorite={isFavorite} />
     </div>
   );
 }
