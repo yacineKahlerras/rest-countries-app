@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { memo, useEffect, useRef, useState } from "react";
 import heartFull from "@/assets/images/favorite/heart-fill.svg";
 import heartEmpty from "@/assets/images/favorite/heart.svg";
 import updateUserFavorites from "@/firebase/firestore/updateUserFavorites";
 
-export default function FavoriteButton(props) {
-  const { user, isFavorite, country } = props;
+function FavoriteButton(props) {
+  const { user, country } = props;
+  const { isFavorite } = country;
   const [isFavoriteCountry, setIsFavoriteCountry] = useState(isFavorite);
 
   async function clickHandle() {
@@ -12,10 +13,15 @@ export default function FavoriteButton(props) {
     await updateUserFavorites(
       user.uid,
       country.name.common,
-      !isFavoriteCountry,
-      setIsFavoriteCountry
+      !isFavoriteCountry
     );
   }
+
+  useEffect(() => {
+    if (country.name.common == "United Arab Emirates") {
+      console.log(isFavoriteCountry, isFavorite);
+    }
+  }, [isFavoriteCountry]);
 
   return user ? (
     <button
@@ -32,3 +38,5 @@ export default function FavoriteButton(props) {
     ""
   );
 }
+
+export default memo(FavoriteButton);

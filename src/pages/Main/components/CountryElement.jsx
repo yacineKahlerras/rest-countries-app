@@ -10,7 +10,6 @@ import FavoriteButton from "./FavoriteButton";
 
 function CountryElement(props) {
   const { country } = props;
-  const { isFavorite } = country;
   const { user } = useContext(FilterDataContext);
   const countryName = country.name.common.replace(/\s+/g, "_").toLowerCase();
 
@@ -68,7 +67,7 @@ function CountryElement(props) {
       </Link>
 
       {/* favorite country button */}
-      <FavoriteButton user={user} isFavorite={isFavorite} country={country} />
+      <FavoriteButton user={user} country={country} />
     </div>
   );
 }
