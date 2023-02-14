@@ -8,7 +8,7 @@ export default async function updateUserFavorites(
 ) {
   const fieldAction = isFavorite ? true : deleteField();
 
-  await setDoc(
+  const lolo = await setDoc(
     doc(collection(db, "users"), uid),
     {
       [countryName]: fieldAction,

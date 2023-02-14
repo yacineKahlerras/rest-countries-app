@@ -68,7 +68,7 @@ function CountryElement(props) {
       </Link>
 
       {/* favorite country button */}
-      <FavoriteButton user={user} isFavorite={isFavorite} />
+      <FavoriteButton user={user} isFavorite={isFavorite} country={country} />
     </div>
   );
 }
