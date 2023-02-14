@@ -15,9 +15,7 @@ export default async function updateUserFavorites(
     },
     { merge: true }
   )
-    .then(() => {
-      console.log("update success");
-    })
+    .then(() => {})
     .catch((error) => {
       console.log(`Unsuccessful returned error ${error}`);
       setIsFavoriteCountry((prev) => !prev);
