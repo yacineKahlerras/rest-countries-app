@@ -1,4 +1,4 @@
-import React, { memo, useState, useEffect, useContext } from "react";
+import React, { memo, useState, useEffect, useContext, useRef } from "react";
 import InfiniteScroll from "react-infinite-scroller";
 import FilterDataContext from "@/utils/contexts/FilterDataContext";
 import Loading from "./Loading";
@@ -19,6 +19,7 @@ function CountriesMap(props) {
     filteredCountryList.slice(0, itemsPerPage)
   );
   const [hasMore, setHasMore] = useState(true); // if there is more countries to show in infinite scroll
+  const userRef = useRef(null);
 
   useEffect(() => {
     setHasMore(true);
@@ -46,8 +47,10 @@ function CountriesMap(props) {
     );
   }
 
+  // getting user data
   useEffect(() => {
-    if (user) {
+    if (user && (!userRef.current || userRef.current.uid != user.uid)) {
+      userRef.current = user;
       sendUserData(user.uid);
       getUserData(user.uid);
     }

@@ -6,7 +6,7 @@ export default async function getUserData(uid) {
   const docSnap = await getDoc(docRef);
 
   if (docSnap.exists()) {
-    console.log("Document data:", docSnap.data());
+    console.log(docSnap.data());
   } else {
     console.log("No such document!");
   }
