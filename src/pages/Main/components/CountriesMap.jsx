@@ -6,10 +6,12 @@ import countriesFilter from "../methods/countriesFilter";
 import loadCountries from "../methods/loadCountries";
 import { nanoid } from "nanoid";
 import ShowCountry from "../methods/ShowCountry";
+import sendUserData from "@/firebase/firestore/sendUserData";
+import getUserData from "@/firebase/firestore/getUserData";
 
 function CountriesMap(props) {
   const { countriesList } = props;
-  const { searchFilter, regionIndex, dropDownContent } =
+  const { searchFilter, regionIndex, dropDownContent, user } =
     useContext(FilterDataContext);
   const [filteredCountryList, setFilteredCountryList] = useState(countriesList);
   const itemsPerPage = 20;
@@ -43,6 +45,13 @@ function CountriesMap(props) {
       itemsPerPage
     );
   }
+
+  useEffect(() => {
+    if (user) {
+      sendUserData(user.uid);
+      getUserData(user.uid);
+    }
+  }, [user]);
 
   return (
     <InfiniteScroll

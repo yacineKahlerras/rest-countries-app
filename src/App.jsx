@@ -29,6 +29,7 @@ function App() {
     dropDownContent,
     searchFilter,
     setSearchFilter,
+    user
   };
 
   // listens to authentification state change and updates the user state

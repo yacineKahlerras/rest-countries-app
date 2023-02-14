@@ -2,9 +2,17 @@ import React, { Suspense, lazy, useEffect, useContext } from "react";
 import DropDown from "./components/DropDown";
 import SearchInput from "./components/SearchInput";
 import { useOutletContext, useSearchParams } from "react-router-dom";
-import { Oval } from "react-loader-spinner";
 import FilterDataContext from "@/utils/contexts/FilterDataContext";
+import MainSuspenceLoading from "./components/MainSuspenceLoading";
 const CountriesMap = lazy(() => import("./components/CountriesMap"));
+
+/**
+ * each time the user changes and its nit null
+ * get data document using the user id
+ * extract the country names array
+ * pass on the 'liked' bool to the country elements
+ * for each country element display empty or full heart based on the liked bool
+ */
 
 function MainPage() {
   const [countries] = useOutletContext();
@@ -30,24 +38,7 @@ function MainPage() {
         <SearchInput />
         <DropDown />
       </div>
-      <Suspense
-        fallback={
-          <div className="w-full flex justify-center mt-24">
-            <Oval
-              height={80}
-              width={80}
-              color="#4fa94d"
-              wrapperStyle={{}}
-              wrapperClass=""
-              visible={true}
-              ariaLabel="oval-loading"
-              secondaryColor="#4fa94d"
-              strokeWidth={2}
-              strokeWidthSecondary={2}
-            />
-          </div>
-        }
-      >
+      <Suspense fallback={<MainSuspenceLoading />}>
         {countries ? <CountriesMap countriesList={countries} /> : ""}
       </Suspense>
     </div>
