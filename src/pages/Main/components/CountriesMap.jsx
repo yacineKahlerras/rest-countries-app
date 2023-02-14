@@ -52,7 +52,6 @@ function CountriesMap(props) {
   useEffect(() => {
     if (user && (!userRef.current || userRef.current.uid != user.uid)) {
       userRef.current = user;
-      // updateUserFavorites(user.uid, "Benin", true);
       getUserData(user.uid, setFavoriteCountries);
     }
   }, [user]);
