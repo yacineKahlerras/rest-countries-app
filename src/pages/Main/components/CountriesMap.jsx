@@ -57,8 +57,6 @@ function CountriesMap(props) {
     }
   }, [user]);
 
-  console.log(favoriteCountries);
-
   return (
     <InfiniteScroll
       pageStart={0}
