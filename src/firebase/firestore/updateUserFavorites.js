@@ -14,5 +14,12 @@ export default async function updateUserFavorites(
       [countryName]: fieldAction,
     },
     { merge: true }
-  );
+  )
+    .then(() => {
+      console.log("update success");
+    })
+    .catch((error) => {
+      console.log(`Unsuccessful returned error ${error}`);
+      setIsFavoriteCountry((prev) => !prev);
+    });
 }

@@ -7,9 +7,14 @@ export default function FavoriteButton(props) {
   const { user, isFavorite, country } = props;
   const [isFavoriteCountry, setIsFavoriteCountry] = useState(isFavorite);
 
-  function clickHandle() {
-    updateUserFavorites(user.uid, country.name.common, !isFavoriteCountry);
+  async function clickHandle() {
     setIsFavoriteCountry(!isFavoriteCountry);
+    await updateUserFavorites(
+      user.uid,
+      country.name.common,
+      !isFavoriteCountry,
+      setIsFavoriteCountry
+    );
   }
 
   return user ? (
