@@ -57,21 +57,23 @@ function CountriesMap(props) {
   }, [user]);
 
   return (
-    <FavoriteCountriesContext.Provider value={setFavoriteCountries}>
-      <InfiniteScroll
-        pageStart={0}
-        loadMore={countriesLoader}
-        hasMore={hasMore}
-        loader={<Loading key={nanoid()} />}
-        threshold={500}
-        className="grid justify-center justify-items-center gap-5 grid-cols-countriesMap mx-auto pb-14"
+    <InfiniteScroll
+      pageStart={0}
+      loadMore={countriesLoader}
+      hasMore={hasMore}
+      loader={<Loading key={nanoid()} />}
+      threshold={500}
+      className="grid justify-center justify-items-center gap-5 grid-cols-countriesMap mx-auto pb-14"
+    >
+      <FavoriteCountriesContext.Provider
+        value={{ favoriteCountries, setFavoriteCountries }}
       >
         <ShowCountry
           infiniteScrollList={infiniteScrollList}
           favoriteCountries={favoriteCountries}
         />
-      </InfiniteScroll>
-    </FavoriteCountriesContext.Provider>
+      </FavoriteCountriesContext.Provider>
+    </InfiniteScroll>
   );
 }
 

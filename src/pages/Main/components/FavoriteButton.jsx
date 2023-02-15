@@ -8,7 +8,7 @@ function FavoriteButton(props) {
   const { user, country } = props;
   const { isFavorite } = country;
   const countryName = country.name.common;
-  const setFavoriteCountries = useContext(FavoriteCountriesContext);
+  const { setFavoriteCountries } = useContext(FavoriteCountriesContext);
 
   async function clickHandle() {
     setFavoriteCountries((prev) => ({
@@ -16,10 +16,6 @@ function FavoriteButton(props) {
       [countryName]: !isFavorite,
     }));
     await updateUserFavorites(user.uid, countryName, !isFavorite);
-  }
-
-  if (countryName == "United Arab Emirates") {
-    console.log(isFavorite);
   }
 
   return user ? (

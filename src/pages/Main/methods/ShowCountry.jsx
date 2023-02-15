@@ -13,6 +13,8 @@ export default function ShowCountry(props) {
       favoriteCountries[infiniteScrollList[i].name.common]
     ) {
       infiniteScrollList[i] = { ...infiniteScrollList[i], isFavorite: true };
+    } else {
+      infiniteScrollList[i] = { ...infiniteScrollList[i], isFavorite: false };
     }
     items.push(
       <CountryElement key={nanoid()} country={infiniteScrollList[i]} />
