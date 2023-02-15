@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Nav from "@/components/Nav/Nav";
 import NavBarData from "./utils/contexts/DarkThemeContext";
 import { Outlet } from "react-router-dom";
@@ -7,6 +7,7 @@ import FilterDataContext from "./utils/contexts/FilterDataContext";
 import getRedirect from "./firebase/googleSignInRedirectResult";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./firebase/auth";
+import getUserData from "./firebase/firestore/getUserData";
 
 function App() {
   const [darkTheme, setDarkTheme] = useState(true);
@@ -16,6 +17,16 @@ function App() {
   const dropDownContent = ["Africa", "Americas", "Asia", "Europe", "Oceania"];
   const [user, setUser] = useState(null);
   const [isLoadingUser, setIsLoadingUser] = useState(false);
+
+  const userRef = useRef(null);
+  const [favoriteCountries, setFavoriteCountries] = useState(null);
+  // getting user data
+  useEffect(() => {
+    if (user && (!userRef.current || userRef.current.uid != user.uid)) {
+      userRef.current = user;
+      getUserData(user.uid, setFavoriteCountries);
+    }
+  }, [user]);
 
   // getting google sign in redirect result
   useEffect(() => {
@@ -29,7 +40,9 @@ function App() {
     dropDownContent,
     searchFilter,
     setSearchFilter,
-    user
+    user,
+    favoriteCountries,
+    setFavoriteCountries,
   };
 
   // listens to authentification state change and updates the user state

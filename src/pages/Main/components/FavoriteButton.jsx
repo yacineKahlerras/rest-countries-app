@@ -2,13 +2,13 @@ import React, { memo, useContext } from "react";
 import heartFull from "@/assets/images/favorite/heart-fill.svg";
 import heartEmpty from "@/assets/images/favorite/heart.svg";
 import updateUserFavorites from "@/firebase/firestore/updateUserFavorites";
-import FavoriteCountriesContext from "@/utils/contexts/FavoriteCountriesContext";
+import FilterDataContext from "@/utils/contexts/FilterDataContext";
 
 function FavoriteButton(props) {
   const { user, country } = props;
   const { isFavorite } = country;
   const countryName = country.name.common;
-  const { setFavoriteCountries } = useContext(FavoriteCountriesContext);
+  const { setFavoriteCountries } = useContext(FilterDataContext);
 
   async function clickHandle() {
     setFavoriteCountries((prev) => ({

@@ -9,6 +9,7 @@ import CountryPage, {
   CountryPageLoader,
 } from "./pages/CountryPage/CountryPage";
 import baseUrl from "@/utils/data/baseUrl";
+import FavoriteCountries from "./pages/favoriteCountries/FavoritesCountries";
 
 const router = createBrowserRouter([
   {
@@ -24,6 +25,11 @@ const router = createBrowserRouter([
         path: `${baseUrl}/:countryName`,
         loader: CountryPageLoader,
         element: <CountryPage />,
+        errorElement: <ErrorPage />,
+      },
+      {
+        path: `${baseUrl}/Favorites`,
+        element: <FavoriteCountries />,
         errorElement: <ErrorPage />,
       },
     ],

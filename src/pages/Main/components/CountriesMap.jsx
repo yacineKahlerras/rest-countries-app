@@ -1,4 +1,4 @@
-import React, { memo, useState, useEffect, useContext, useRef } from "react";
+import React, { memo, useState, useEffect, useContext } from "react";
 import InfiniteScroll from "react-infinite-scroller";
 import FilterDataContext from "@/utils/contexts/FilterDataContext";
 import Loading from "./Loading";
@@ -6,12 +6,10 @@ import countriesFilter from "../methods/countriesFilter";
 import loadCountries from "../methods/loadCountries";
 import { nanoid } from "nanoid";
 import ShowCountry from "../methods/ShowCountry";
-import getUserData from "@/firebase/firestore/getUserData";
-import FavoriteCountriesContext from "@/utils/contexts/FavoriteCountriesContext";
 
 function CountriesMap(props) {
   const { countriesList } = props;
-  const { searchFilter, regionIndex, dropDownContent, user } =
+  const { searchFilter, regionIndex, dropDownContent } =
     useContext(FilterDataContext);
   const [filteredCountryList, setFilteredCountryList] = useState(countriesList);
   const itemsPerPage = 20;
@@ -19,8 +17,6 @@ function CountriesMap(props) {
     filteredCountryList.slice(0, itemsPerPage)
   );
   const [hasMore, setHasMore] = useState(true); // if there is more countries to show in infinite scroll
-  const userRef = useRef(null);
-  const [favoriteCountries, setFavoriteCountries] = useState(null);
 
   useEffect(() => {
     setHasMore(true);
@@ -48,14 +44,6 @@ function CountriesMap(props) {
     );
   }
 
-  // getting user data
-  useEffect(() => {
-    if (user && (!userRef.current || userRef.current.uid != user.uid)) {
-      userRef.current = user;
-      getUserData(user.uid, setFavoriteCountries);
-    }
-  }, [user]);
-
   return (
     <InfiniteScroll
       pageStart={0}
@@ -65,14 +53,7 @@ function CountriesMap(props) {
       threshold={500}
       className="grid justify-center justify-items-center gap-5 grid-cols-countriesMap mx-auto pb-14"
     >
-      <FavoriteCountriesContext.Provider
-        value={{ favoriteCountries, setFavoriteCountries }}
-      >
-        <ShowCountry
-          infiniteScrollList={infiniteScrollList}
-          favoriteCountries={favoriteCountries}
-        />
-      </FavoriteCountriesContext.Provider>
+      <ShowCountry infiniteScrollList={infiniteScrollList} />
     </InfiniteScroll>
   );
 }
