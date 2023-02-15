@@ -11,11 +11,16 @@ export default function FavoriteCountries() {
   );
 
   return (
-    <div className="grid justify-center justify-items-center gap-5 grid-cols-countriesMap mx-auto pb-14">
-      {favoriteCountriesMap.map((favoriteCountry) => {
-        favoriteCountry.isFavorite = true;
-        return <CountryElement country={favoriteCountry} />;
-      })}
+    <div className="py-12 max-w-7xl mx-auto">
+      <h1 className="text-3xl font-bold mb-7 text-center">
+        Favorite Countries
+      </h1>
+      <div className="grid justify-center justify-items-center gap-5 grid-cols-countriesMap mx-auto pb-14">
+        {favoriteCountriesMap.map((favoriteCountry) => {
+          favoriteCountry.isFavorite = true;
+          return <CountryElement country={favoriteCountry} />;
+        })}
+      </div>
     </div>
   );
 }
