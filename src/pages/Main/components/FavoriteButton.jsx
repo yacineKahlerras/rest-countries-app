@@ -1,27 +1,26 @@
-import React, { memo, useEffect, useRef, useState } from "react";
+import React, { memo, useContext } from "react";
 import heartFull from "@/assets/images/favorite/heart-fill.svg";
 import heartEmpty from "@/assets/images/favorite/heart.svg";
 import updateUserFavorites from "@/firebase/firestore/updateUserFavorites";
+import FavoriteCountriesContext from "@/utils/contexts/FavoriteCountriesContext";
 
 function FavoriteButton(props) {
   const { user, country } = props;
   const { isFavorite } = country;
-  const [isFavoriteCountry, setIsFavoriteCountry] = useState(isFavorite);
+  const countryName = country.name.common;
+  const setFavoriteCountries = useContext(FavoriteCountriesContext);
 
   async function clickHandle() {
-    setIsFavoriteCountry(!isFavoriteCountry);
-    await updateUserFavorites(
-      user.uid,
-      country.name.common,
-      !isFavoriteCountry
-    );
+    setFavoriteCountries((prev) => ({
+      ...prev,
+      [countryName]: !isFavorite,
+    }));
+    await updateUserFavorites(user.uid, countryName, !isFavorite);
   }
 
-  useEffect(() => {
-    if (country.name.common == "United Arab Emirates") {
-      console.log(isFavoriteCountry, isFavorite);
-    }
-  }, [isFavoriteCountry]);
+  if (countryName == "United Arab Emirates") {
+    console.log(isFavorite);
+  }
 
   return user ? (
     <button
@@ -30,7 +29,7 @@ function FavoriteButton(props) {
     >
       <img
         className="dark:invert w-full"
-        src={isFavoriteCountry ? heartFull : heartEmpty}
+        src={isFavorite ? heartFull : heartEmpty}
         alt="favorite icon"
       />
     </button>
