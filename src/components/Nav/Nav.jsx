@@ -19,7 +19,7 @@ function Nav() {
         <Link to={`${baseUrl}`}>
           <h1>Where is the world ?</h1>
         </Link>
-        <div className="flex gap-5">
+        <div className="gap-5 hidden md:flex">
           <NavSignIn />
           <button onClick={toggleTheme} className="flex gap-1 items-center">
             <img
@@ -30,6 +30,11 @@ function Nav() {
             {darkTheme ? "Light" : "Dark"} Mode
           </button>
         </div>
+        {/* sidebar button */}
+        <button
+          className="w-9 aspect-square bg-hamburger bg-no-repeat bg-cover bg-center invert"
+          aria-label="sidemenu button"
+        ></button>
       </div>
     </nav>
   );

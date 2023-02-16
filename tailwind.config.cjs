@@ -7,6 +7,10 @@ module.exports = {
       gridTemplateColumns: {
         countriesMap: "repeat( auto-fit, minmax(15.62rem, 18.4rem) )",
       },
+      backgroundImage: {
+        hamburger: "url('@/assets/images/sidemenu/hamburger.svg')",
+        close: "url('@/assets/images/sidemenu/close.svg')",
+      },
     },
     colors: {
       DarkBlue: "hsl(209, 23%, 22%)" /*(Dark Mode Elements)*/,
