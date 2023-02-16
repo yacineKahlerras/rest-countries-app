@@ -20,7 +20,7 @@ function Nav() {
   }
 
   return (
-    <nav className="bg-White dark:bg-DarkBlue drop-shadow-md z-30 relative">
+    <nav className="bg-White dark:bg-DarkBlue drop-shadow-md z-30 relative ">
       <div className="max-w-7xl mx-auto flex justify-between items-center px-4 py-6">
         <Link to={`${baseUrl}`}>
           <h1>Where is the world ?</h1>
@@ -39,10 +39,26 @@ function Nav() {
 
         {/* sidebar button */}
         <button
-          className={`w-9 aspect-square ${menuBtnImg} bg-no-repeat bg-cover bg-center invert md:hidden`}
+          className={`w-9 aspect-square ${menuBtnImg} bg-no-repeat bg-cover bg-center invert md:hidden z-10`}
           aria-label="sidemenu button"
           onClick={toggleSidemenu}
         ></button>
+
+        {/* sidemenu */}
+        <div className="fixed w-full h-screen top-0 left-0">
+          <div
+            className={`bg-VeryDarkBlue bg-opacity-70 w-full h-full transition-all ${
+              !sidemenuActive ? "-z-10 opacity-0" : ""
+            }`}
+          ></div>
+          <div
+            className={`absolute h-full w-[min(100%,15rem)] bg-DarkBlue top-0 right-0 transition-all ${
+              !sidemenuActive ? "translate-x-full" : ""
+            }`}
+          >
+            <ul></ul>
+          </div>
+        </div>
       </div>
     </nav>
   );
