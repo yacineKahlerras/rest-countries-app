@@ -25,14 +25,14 @@ export default function NavProfile(props) {
 
   return (
     <div className="grid place-items-center">
-      <button className="w-8 relative" onClick={toggleProfileDropdown}>
+      <div className="w-8 relative" onClick={toggleProfileDropdown}>
         <img
           src={user ? user.photoURL : ""}
           alt="profile photo"
           className="aspect-square rounded-full"
         />
         {profileDropDown}
-      </button>
+      </div>
       <div
         className={` fixed w-full h-screen top-0 left-0 -z-10 ${dropDownVisible} `}
         onClick={toggleProfileDropdown}

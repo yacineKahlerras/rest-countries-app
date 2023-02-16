@@ -2,24 +2,36 @@ import React, { useContext, useState } from "react";
 import NavBarData from "@/utils/contexts/DarkThemeContext";
 import NavLoading from "@/components/Nav/components/NavLoading";
 import SignInButton from "@/components/Nav/components/SignInButton";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import baseUrl from "@/utils/data/baseUrl";
 import SignOut from "@/firebase/googleSignOut";
 
-export default function NavSignInSidemenu() {
+export default function NavSignInSidemenu(props) {
   const { isLoadingUser, user } = useContext(NavBarData);
+  const { toggleSidemenu } = props;
+  const navigate = useNavigate();
 
   const signInButton = <SignInButton />;
 
   const loadingAnimation = <NavLoading />;
 
+  function goFavorites() {
+    toggleSidemenu();
+    navigate(`${baseUrl}Favorites`);
+  }
+
   const userProfileElement = (
-    <ul className={`px-6 whitespace-nowrap flex flex-col items-start gap-4 `}>
-      <li>
-        <Link to={`${baseUrl}Favorites`}>Favorites</Link>
-      </li>
-      <button onClick={SignOut}>Sign Out</button>
-    </ul>
+    <div className={`px-6 whitespace-nowrap flex flex-col items-start gap-4 `}>
+      <button onClick={goFavorites}>Favorites</button>
+      <button
+        onClick={() => {
+          SignOut();
+          toggleSidemenu();
+        }}
+      >
+        Sign Out
+      </button>
+    </div>
   );
 
   return (

@@ -38,7 +38,7 @@ export default function Sidemenu(props) {
             />
             {darkTheme ? "Light" : "Dark"} Mode
           </button>
-          <NavSignInSidemenu />
+          <NavSignInSidemenu toggleSidemenu={toggleSidemenu} />
         </ul>
       </div>
     </div>
