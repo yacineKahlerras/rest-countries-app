@@ -43,21 +43,19 @@ function Nav() {
           aria-label="sidemenu button"
           onClick={toggleSidemenu}
         ></button>
-
-        {/* sidemenu */}
-        <div className="fixed w-full h-screen top-0 left-0">
-          <div
-            className={`bg-VeryDarkBlue bg-opacity-70 w-full h-full transition-all ${
-              !sidemenuActive ? "-z-10 opacity-0" : ""
-            }`}
-          ></div>
-          <div
-            className={`absolute h-full w-[min(100%,15rem)] bg-DarkBlue top-0 right-0 transition-all ${
-              !sidemenuActive ? "translate-x-full" : ""
-            }`}
-          >
-            <ul></ul>
-          </div>
+      </div>
+      {/* sidemenu */}
+      <div
+        className={`fixed w-full h-screen top-0 left-0 bg-VeryDarkBlue overflow-x-hidden transition-all ${
+          !sidemenuActive ? "-z-50 bg-opacity-0" : "bg-opacity-70"
+        }`}
+      >
+        <div
+          className={`absolute h-full w-[min(100%,15rem)] bg-DarkBlue top-0 right-0 transition-all ${
+            !sidemenuActive ? "translate-x-full" : ""
+          }`}
+        >
+          <ul></ul>
         </div>
       </div>
     </nav>
