@@ -22,10 +22,10 @@ export default function Sidemenu(props) {
       onClick={exitSidemenu}
     >
       <div
-        className={`absolute h-full w-[min(100%,15rem)] bg-DarkBlue top-0 right-0 transition-all ${sidemenuContentStyle}`}
+        className={`absolute h-full w-[min(100%,15rem)] bg-VeryLightGray dark:bg-DarkBlue top-0 right-0 transition-all ${sidemenuContentStyle}`}
       >
         <button
-          className={`w-9 aspect-square bg-close bg-no-repeat bg-cover bg-center invert md:hidden absolute top-5 right-5`}
+          className={`w-9 aspect-square bg-close bg-no-repeat bg-cover bg-center dark:invert md:hidden absolute top-5 right-5`}
           aria-label="sidemenu button"
           onClick={toggleSidemenu}
         ></button>

@@ -48,7 +48,7 @@ function Nav() {
 
           {/* sidebar button */}
           <button
-            className={`w-9 aspect-square bg-hamburger bg-no-repeat bg-cover bg-center invert md:hidden`}
+            className={`w-9 aspect-square bg-hamburger bg-no-repeat bg-cover bg-center dark:invert md:hidden`}
             aria-label="sidemenu button"
             onClick={toggleSidemenu}
           ></button>
