@@ -16,9 +16,9 @@ export default function NavProfile(props) {
         <li className="hover:font-medium">
           <Link to={`${baseUrl}Favorites`}>Favorites</Link>
         </li>
-        <li className="hover:font-medium" onClick={SignOut}>
+        <button className="hover:font-medium" onClick={SignOut}>
           Sign Out
-        </li>
+        </button>
       </ul>
     </div>
   );

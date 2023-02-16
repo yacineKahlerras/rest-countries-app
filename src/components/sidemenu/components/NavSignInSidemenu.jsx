@@ -15,11 +15,11 @@ export default function NavSignInSidemenu() {
   const loadingAnimation = <NavLoading />;
 
   const userProfileElement = (
-    <ul className={`px-6 whitespace-nowrap  flex flex-col gap-4 `}>
+    <ul className={`px-6 whitespace-nowrap flex flex-col items-start gap-4 `}>
       <li>
         <Link to={`${baseUrl}Favorites`}>Favorites</Link>
       </li>
-      <li onClick={SignOut}>Sign Out</li>
+      <button onClick={SignOut}>Sign Out</button>
     </ul>
   );
 
