@@ -53,8 +53,8 @@ function Nav() {
         </div>
 
         {/* sidemenu */}
-        <Sidemenu sidemenuParams={sidemenuParams} />
       </nav>
+      <Sidemenu sidemenuParams={sidemenuParams} />
     </>
   );
 }

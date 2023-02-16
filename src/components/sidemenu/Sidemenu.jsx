@@ -6,20 +6,20 @@ import NavSignIn from "../Nav/components/NavSignIn";
 export default function Sidemenu(props) {
   const { sidemenuActive, toggleSidemenu, toggleTheme, darkTheme } =
     props.sidemenuParams;
+  const sidemenuStyle = !sidemenuActive
+    ? "-z-50 bg-opacity-0"
+    : "bg-opacity-70 z-50";
+  const sidemenuContentStyle = !sidemenuActive ? "translate-x-full" : "";
 
   return (
     <div
-      className={`fixed w-full h-screen top-0 left-0 bg-VeryDarkBlue overflow-x-hidden 
-  transition-all 
-  ${!sidemenuActive ? "-z-50 bg-opacity-0" : "bg-opacity-70 z-50"}`}
+      className={`fixed w-full h-screen top-0 left-0 bg-VeryDarkBlue overflow-x-hidden transition-all ${sidemenuStyle}`}
     >
       <div
-        className={`absolute h-full w-[min(100%,15rem)] bg-DarkBlue top-0 right-0 transition-all 
-    ${!sidemenuActive ? "translate-x-full" : ""}`}
+        className={`absolute h-full w-[min(100%,15rem)] bg-DarkBlue top-0 right-0 transition-all ${sidemenuContentStyle}`}
       >
         <button
-          className={`w-9 aspect-square bg-close bg-no-repeat bg-cover bg-center invert 
-      md:hidden absolute top-5 right-5`}
+          className={`w-9 aspect-square bg-close bg-no-repeat bg-cover bg-center invert md:hidden absolute top-5 right-5`}
           aria-label="sidemenu button"
           onClick={toggleSidemenu}
         ></button>
