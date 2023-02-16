@@ -14,6 +14,7 @@ export default function Sidemenu(props) {
   return (
     <div
       className={`fixed w-full h-screen top-0 left-0 bg-VeryDarkBlue overflow-x-hidden transition-all ${sidemenuStyle}`}
+      id="sidemenu-container"
     >
       <div
         className={`absolute h-full w-[min(100%,15rem)] bg-DarkBlue top-0 right-0 transition-all ${sidemenuContentStyle}`}
