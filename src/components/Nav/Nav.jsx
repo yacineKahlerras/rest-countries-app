@@ -1,4 +1,4 @@
-import React, { memo, useContext } from "react";
+import React, { memo, useContext, useState } from "react";
 import sunIcon from "@/assets/images/darkTheme/brightness-low-fill.svg";
 import moonIcon from "@/assets/images/darkTheme/moon-fill.svg";
 import NavBarData from "@/utils/contexts/DarkThemeContext";
@@ -8,9 +8,15 @@ import NavSignIn from "./components/NavSignIn";
 
 function Nav() {
   const { darkTheme, setDarkTheme } = useContext(NavBarData);
+  const [sidemenuActive, setSidemenuActive] = useState(false);
+  const menuBtnImg = sidemenuActive ? "bg-close" : "bg-hamburger";
 
   function toggleTheme() {
     setDarkTheme((oldValue) => !oldValue);
+  }
+
+  function toggleSidemenu() {
+    setSidemenuActive((prev) => !prev);
   }
 
   return (
@@ -30,10 +36,12 @@ function Nav() {
             {darkTheme ? "Light" : "Dark"} Mode
           </button>
         </div>
+
         {/* sidebar button */}
         <button
-          className="w-9 aspect-square bg-hamburger bg-no-repeat bg-cover bg-center invert"
+          className={`w-9 aspect-square ${menuBtnImg} bg-no-repeat bg-cover bg-center invert md:hidden`}
           aria-label="sidemenu button"
+          onClick={toggleSidemenu}
         ></button>
       </div>
     </nav>
