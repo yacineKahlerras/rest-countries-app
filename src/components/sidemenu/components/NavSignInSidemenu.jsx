@@ -1,6 +1,5 @@
 import React, { useContext, useState } from "react";
 import NavBarData from "@/utils/contexts/DarkThemeContext";
-import NavProfile from "@/components/Nav/components/NavProfile";
 import NavLoading from "@/components/Nav/components/NavLoading";
 import SignInButton from "@/components/Nav/components/SignInButton";
 import { Link } from "react-router-dom";
