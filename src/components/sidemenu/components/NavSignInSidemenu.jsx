@@ -1,28 +1,27 @@
 import React, { useContext, useState } from "react";
 import NavBarData from "@/utils/contexts/DarkThemeContext";
-import NavProfile from "./NavProfile";
-import NavLoading from "./NavLoading";
-import SignInButton from "./SignInButton";
+import NavProfile from "@/components/Nav/components/NavProfile";
+import NavLoading from "@/components/Nav/components/NavLoading";
+import SignInButton from "@/components/Nav/components/SignInButton";
+import { Link } from "react-router-dom";
+import baseUrl from "@/utils/data/baseUrl";
+import SignOut from "@/firebase/googleSignOut";
 
 export default function NavSignInSidemenu() {
   const { isLoadingUser, user } = useContext(NavBarData);
-  const [dropDownActive, setDropdownActive] = useState(false);
 
   const signInButton = <SignInButton />;
 
   const loadingAnimation = <NavLoading />;
 
   const userProfileElement = (
-    <NavProfile
-      user={user}
-      toggleProfileDropdown={toggleProfileDropdown}
-      dropDownActive={dropDownActive}
-    />
+    <ul className={`px-6 whitespace-nowrap  flex flex-col gap-4 `}>
+      <li>
+        <Link to={`${baseUrl}Favorites`}>Favorites</Link>
+      </li>
+      <li onClick={SignOut}>Sign Out</li>
+    </ul>
   );
-
-  function toggleProfileDropdown() {
-    setDropdownActive((prev) => !prev);
-  }
 
   return (
     <div className="relative">
