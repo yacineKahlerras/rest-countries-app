@@ -11,10 +11,15 @@ export default function Sidemenu(props) {
     : "bg-opacity-70 z-50";
   const sidemenuContentStyle = !sidemenuActive ? "translate-x-full" : "";
 
+  function exitSidemenu(e) {
+    if (e.target.id == "sidemenu-container") toggleSidemenu();
+  }
+
   return (
     <div
       className={`fixed w-full h-screen top-0 left-0 bg-VeryDarkBlue overflow-x-hidden transition-all ${sidemenuStyle}`}
       id="sidemenu-container"
+      onClick={exitSidemenu}
     >
       <div
         className={`absolute h-full w-[min(100%,15rem)] bg-DarkBlue top-0 right-0 transition-all ${sidemenuContentStyle}`}
