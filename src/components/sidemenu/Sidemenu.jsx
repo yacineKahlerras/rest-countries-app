@@ -1,7 +1,7 @@
 import React from "react";
 import sunIcon from "@/assets/images/darkTheme/brightness-low-fill.svg";
 import moonIcon from "@/assets/images/darkTheme/moon-fill.svg";
-import NavSignIn from "../Nav/components/NavSignIn";
+import NavSignInSidemenu from "./components/NavSignInSidemenu";
 
 export default function Sidemenu(props) {
   const { sidemenuActive, toggleSidemenu, toggleTheme, darkTheme } =
@@ -38,7 +38,7 @@ export default function Sidemenu(props) {
             />
             {darkTheme ? "Light" : "Dark"} Mode
           </button>
-          <NavSignIn />
+          <NavSignInSidemenu />
         </ul>
       </div>
     </div>

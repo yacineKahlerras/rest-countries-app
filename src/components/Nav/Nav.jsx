@@ -32,6 +32,8 @@ function Nav() {
           <Link to={`${baseUrl}`}>
             <h1>Where is the world ?</h1>
           </Link>
+
+          {/* nav buttons */}
           <div className="gap-5 hidden md:flex">
             <NavSignIn />
             <button onClick={toggleTheme} className="flex gap-1 items-center">
@@ -51,9 +53,9 @@ function Nav() {
             onClick={toggleSidemenu}
           ></button>
         </div>
-
-        {/* sidemenu */}
       </nav>
+
+      {/* sidemenu */}
       <Sidemenu sidemenuParams={sidemenuParams} />
     </>
   );
