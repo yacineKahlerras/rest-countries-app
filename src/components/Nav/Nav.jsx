@@ -27,10 +27,12 @@ function Nav() {
 
   return (
     <>
-      <nav className="bg-White dark:bg-DarkBlue drop-shadow-md z-30">
+      <nav className="bg-White dark:bg-DarkBlue drop-shadow-md">
         <div className="max-w-7xl mx-auto flex justify-between items-center px-4 py-6">
           <Link to={`${baseUrl}`}>
-            <h1>Where is the world ?</h1>
+            <h1 className=" font-semibold text-lg md:text-xl ">
+              Where is the world ?
+            </h1>
           </Link>
 
           {/* nav buttons */}

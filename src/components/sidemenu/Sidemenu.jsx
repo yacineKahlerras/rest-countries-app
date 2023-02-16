@@ -7,7 +7,7 @@ export default function Sidemenu(props) {
   const { sidemenuActive, toggleSidemenu, toggleTheme, darkTheme } =
     props.sidemenuParams;
   const sidemenuStyle = !sidemenuActive
-    ? "-z-50 bg-opacity-0"
+    ? "-z-10 bg-opacity-0"
     : "bg-opacity-70 z-50";
   const sidemenuContentStyle = !sidemenuActive ? "translate-x-full" : "";
 
@@ -17,7 +17,7 @@ export default function Sidemenu(props) {
 
   return (
     <div
-      className={`fixed w-full h-screen top-0 left-0 bg-VeryDarkBlue overflow-x-hidden transition-all ${sidemenuStyle}`}
+      className={`fixed w-full h-screen top-0 left-0 bg-VeryDarkBlue overflow-x-hidden transition-all ${sidemenuStyle} md:hidden`}
       id="sidemenu-container"
       onClick={exitSidemenu}
     >
