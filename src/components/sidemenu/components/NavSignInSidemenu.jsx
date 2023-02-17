@@ -1,8 +1,8 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import NavBarData from "@/utils/contexts/DarkThemeContext";
 import NavLoading from "@/components/Nav/components/NavLoading";
 import SignInButton from "@/components/Nav/components/SignInButton";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import baseUrl from "@/utils/data/baseUrl";
 import SignOut from "@/firebase/googleSignOut";
 
