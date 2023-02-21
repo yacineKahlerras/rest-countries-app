@@ -27,7 +27,7 @@ function Nav() {
 
   return (
     <>
-      <nav className="bg-White dark:bg-DarkBlue drop-shadow-md">
+      <nav className="bg-White dark:bg-DarkBlue drop-shadow-md md:relative ">
         <div className="max-w-7xl mx-auto flex justify-between items-center px-4 py-6">
           <Link to={`${baseUrl}`}>
             <h1 className=" font-semibold text-lg md:text-xl ">

@@ -6,9 +6,11 @@ import FilterDataContext from "@/utils/contexts/FilterDataContext";
 
 function FavoriteButton(props) {
   const { user, country } = props;
-  const { isFavorite } = country;
   const countryName = country.name.common;
-  const { setFavoriteCountries } = useContext(FilterDataContext);
+  const { setFavoriteCountries, favoriteCountries } =
+    useContext(FilterDataContext);
+  const isFavorite =
+    favoriteCountries && favoriteCountries[country.name.common];
 
   async function clickHandle() {
     setFavoriteCountries((prev) => ({
