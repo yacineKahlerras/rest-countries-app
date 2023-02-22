@@ -3,8 +3,9 @@
 ## Table of contents
 
 - [Overview](#overview)
-  - [Links](#links)
-  - [Built with](#built-with)
+- [Links](#links)
+- [Built with](#built-with)
+- [What I Learned](#what-i-learned)
 
 ## Overview
 
@@ -27,3 +28,15 @@ to get additional information on it like location and its neighbouring countries
 - [Infinite Scroller](https://www.npmjs.com/package/react-infinite-scroller)
 - [Spinner](https://mhnpd.github.io/react-loader-spinner/docs/components/oval)
 - [Lazy Load image](https://www.npmjs.com/package/react-lazy-load-image-component)
+
+### What I Learned
+
+- different ways to enhance performance with memoization and finding solutions to reduce
+  renders as much as possible, also used lazy loading to make the app a little less heavy
+  and doesnt' download all the images at once
+- familiarizing myself more with tailwind themes and configurations
+- using infinite scroller to load small shunks of the big list for performance instead of doing
+  pagination
+- experimenting and reading more documentation about react router dom
+- familiarizing myself more with firebase with its authetications and database, it is a lot easier
+  to use now
