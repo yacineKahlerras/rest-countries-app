@@ -13,7 +13,7 @@
 
 ### Links
 
-- [https://yacinekahlerras.github.io/rest-countries-app/](Live Site URL)
+- [Live Site URL](https://yacinekahlerras.github.io/rest-countries-app/)
 
 ### Built with
 
