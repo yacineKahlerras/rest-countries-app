@@ -5,7 +5,6 @@
 - [Overview](#overview)
   - [Links](#links)
   - [Built with](#built-with)
-  - [What I learned](#what-i-learned)
 
 ## Overview
 
