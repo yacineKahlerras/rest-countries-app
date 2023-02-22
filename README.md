@@ -7,8 +7,6 @@
   - [Built with](#built-with)
   - [What I learned](#what-i-learned)
 
-**Note: Delete this note and update the table of contents based on what sections you keep.**
-
 ## Overview
 
 ### Links
@@ -17,16 +15,14 @@
 
 ### Built with
 
-- Semantic HTML5 markup
-- CSS custom properties
-- Flexbox
-- CSS Grid
-- Mobile-first workflow
 - [React](https://reactjs.org/) - JS library
-- [Next.js](https://nextjs.org/) - React framework
-- [Styled Components](https://styled-components.com/) - For styles
-
-**Note: These are just examples. Delete this note and replace the list above with your own choices**
+- [Firebase](https://firebase.google.com/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Leaflet](https://react-leaflet.js.org/)
+- [React Router](https://reactrouter.com/en/main)
+- [Infinite Scroller](https://www.npmjs.com/package/react-infinite-scroller)
+- [Spinner](https://mhnpd.github.io/react-loader-spinner/docs/components/oval)
+- [Lazy Load image](https://www.npmjs.com/package/react-lazy-load-image-component)
 
 ### What I learned
 
@@ -51,5 +47,3 @@ const proudOfThisFunc = () => {
 ```
 
 If you want more help with writing markdown, we'd recommend checking out [The Markdown Guide](https://www.markdownguide.org/) to learn more.
-
-**Note: Delete this note and the content within this section and replace with your own learnings.**
