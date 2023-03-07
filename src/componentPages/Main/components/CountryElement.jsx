@@ -1,6 +1,6 @@
 import baseUrl from "@/utils/data/baseUrl";
 import React, { memo, useContext } from "react";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import CountryName from "./CountryName";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { Skeleton } from "@mui/material";
@@ -34,7 +34,7 @@ function CountryElement(props) {
       overflow-hidden rounded-md capitalize drop-shadow-xl shadow-DarkBlue`}
     >
       {/* clickable country element */}
-      <Link to={`${baseUrl}${countryName}`} className={`w-full`}>
+      <Link href={`/country/${countryName}`} className={`w-full`}>
         <div className="h-[12rem] relative">
           <LazyLoadImage
             className="h-full w-full absolute object-cover object-center"

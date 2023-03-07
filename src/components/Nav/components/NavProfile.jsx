@@ -1,7 +1,8 @@
 import React from "react";
 import SignOut from "@/firebase/googleSignOut";
-import { Link } from "react-router-dom";
 import baseUrl from "@/utils/data/baseUrl";
+import Link from "next/link";
+import Image from "next/image";
 
 export default function NavProfile(props) {
   const { user, toggleProfileDropdown, dropDownActive } = props;
@@ -14,7 +15,7 @@ export default function NavProfile(props) {
         p-3 px-5 whitespace-nowrap rounded-md flex flex-col gap-1 text-left ${dropDownVisible}`}
       >
         <li className="hover:font-medium">
-          <Link to={`${baseUrl}Favorites`}>Favorites</Link>
+          <Link href={`${baseUrl}Favorites`}>Favorites</Link>
         </li>
         <button className="hover:font-medium" onClick={SignOut}>
           Sign Out
@@ -26,10 +27,12 @@ export default function NavProfile(props) {
   return (
     <div className="grid place-items-center">
       <div className="w-8 relative" onClick={toggleProfileDropdown}>
-        <img
+        <Image
           src={user ? user.photoURL : ""}
           alt="profile photo"
           className="aspect-square rounded-full"
+          width={32}
+          height={32}
         />
         {profileDropDown}
       </div>

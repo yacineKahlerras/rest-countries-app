@@ -1,10 +1,10 @@
 import FilterDataContext from "@/utils/contexts/FilterDataContext";
 import React, { memo, useContext, useEffect, useRef } from "react";
-import { useSearchParams } from "react-router-dom";
+// import { useSearchParams } from "react-router-dom";
 
 function SearchInput() {
   const { searchFilter, setSearchFilter } = useContext(FilterDataContext);
-  let [_, setSearchParams] = useSearchParams();
+  // let [_, setSearchParams] = useSearchParams();
   const searchBar = useRef();
 
   useEffect(() => {
@@ -16,12 +16,12 @@ function SearchInput() {
   // input change handler
   function searchHandle(e) {
     setSearchFilter(e.target.value);
-    setSearchParams((prev) => {
-      const value = e.target.value;
-      if (value) prev.set("search", value);
-      else prev.delete("search");
-      return prev;
-    });
+    // setSearchParams((prev) => {
+    //   const value = e.target.value;
+    //   if (value) prev.set("search", value);
+    //   else prev.delete("search");
+    //   return prev;
+    // });
   }
 
   return (

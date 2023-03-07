@@ -2,10 +2,11 @@ import React, { memo, useContext, useState } from "react";
 import sunIcon from "@/assets/images/darkTheme/brightness-low-fill.svg";
 import moonIcon from "@/assets/images/darkTheme/moon-fill.svg";
 import NavBarData from "@/utils/contexts/DarkThemeContext";
-import { Link } from "react-router-dom";
 import baseUrl from "@/utils/data/baseUrl";
 import NavSignIn from "./components/NavSignIn";
 import Sidemenu from "../sidemenu/Sidemenu";
+import Link from "next/link";
+import Image from "next/image";
 
 function Nav() {
   const { darkTheme, setDarkTheme } = useContext(NavBarData);
@@ -29,7 +30,7 @@ function Nav() {
     <>
       <nav className="bg-White dark:bg-DarkBlue drop-shadow-md md:relative ">
         <div className="max-w-7xl mx-auto flex justify-between items-center px-4 py-6">
-          <Link to={`${baseUrl}`}>
+          <Link href={`${baseUrl}`}>
             <h1 className=" font-semibold text-lg md:text-xl ">
               Where is the world ?
             </h1>
@@ -39,7 +40,7 @@ function Nav() {
           <div className="gap-5 hidden md:flex">
             <NavSignIn />
             <button onClick={toggleTheme} className="flex gap-1 items-center">
-              <img
+              <Image
                 src={darkTheme ? sunIcon : moonIcon}
                 alt="theme"
                 className="w-4 dark:w-5 dark:invert"

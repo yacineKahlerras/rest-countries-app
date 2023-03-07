@@ -2,14 +2,13 @@ import React, { useContext } from "react";
 import NavBarData from "@/utils/contexts/DarkThemeContext";
 import NavLoading from "@/components/Nav/components/NavLoading";
 import SignInButton from "@/components/Nav/components/SignInButton";
-import { useNavigate } from "react-router-dom";
 import baseUrl from "@/utils/data/baseUrl";
 import SignOut from "@/firebase/googleSignOut";
 
 export default function NavSignInSidemenu(props) {
   const { isLoadingUser, user } = useContext(NavBarData);
   const { toggleSidemenu } = props;
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const signInButton = <SignInButton />;
 
@@ -17,7 +16,7 @@ export default function NavSignInSidemenu(props) {
 
   function goFavorites() {
     toggleSidemenu();
-    navigate(`${baseUrl}Favorites`);
+    // navigate(`${baseUrl}Favorites`);
   }
 
   const userProfileElement = (

@@ -8,8 +8,8 @@ module.exports = {
         countriesMap: "repeat( auto-fit, minmax(15.62rem, 18.4rem) )",
       },
       backgroundImage: {
-        hamburger: "url('@/assets/images/sidemenu/hamburger.svg')",
-        close: "url('@/assets/images/sidemenu/close.svg')",
+        hamburger: "url('./assets/images/sidemenu/hamburger.svg')",
+        close: "url('./assets/images/sidemenu/close.svg')",
       },
     },
     colors: {

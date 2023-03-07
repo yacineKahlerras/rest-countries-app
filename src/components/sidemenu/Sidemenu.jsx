@@ -2,6 +2,7 @@ import React from "react";
 import sunIcon from "@/assets/images/darkTheme/brightness-low-fill.svg";
 import moonIcon from "@/assets/images/darkTheme/moon-fill.svg";
 import NavSignInSidemenu from "./components/NavSignInSidemenu";
+import Image from "next/image";
 
 export default function Sidemenu(props) {
   const { sidemenuActive, toggleSidemenu, toggleTheme, darkTheme } =
@@ -31,7 +32,7 @@ export default function Sidemenu(props) {
         ></button>
         <ul className=" mt-28 pl-10 flex flex-col gap-5 ">
           <button onClick={toggleTheme} className="flex gap-1 items-center">
-            <img
+            <Image
               src={darkTheme ? sunIcon : moonIcon}
               alt="theme"
               className="w-4 dark:w-5 dark:invert"

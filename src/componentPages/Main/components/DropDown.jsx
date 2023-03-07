@@ -1,6 +1,6 @@
 import FilterDataContext from "@/utils/contexts/FilterDataContext";
 import React, { useContext, useState } from "react";
-import { useSearchParams } from "react-router-dom";
+// import { useSearchParams } from "react-router-dom";
 
 function DropDown() {
   const { regionIndex, setRegionIndex, dropDownContent } =
@@ -8,7 +8,7 @@ function DropDown() {
   const [activeDropDown, setActiveDropDown] = useState(false);
   const dropDownText =
     regionIndex != null ? dropDownContent[regionIndex] : "Filter by region";
-  let [, setSearchParams] = useSearchParams();
+  // let [, setSearchParams] = useSearchParams();
 
   function dropDownToggle() {
     setActiveDropDown((oldValue) => !oldValue);
@@ -18,11 +18,11 @@ function DropDown() {
   function regionFilter(index) {
     setRegionIndex((oldValue) => {
       const isActive = oldValue == index;
-      setSearchParams((prev) => {
-        if (isActive) prev.delete("region");
-        else prev.set("region", index);
-        return prev;
-      });
+      // setSearchParams((prev) => {
+      //   if (isActive) prev.delete("region");
+      //   else prev.set("region", index);
+      //   return prev;
+      // });
       return isActive ? null : index;
     });
     setActiveDropDown((oldValue) => !oldValue);
