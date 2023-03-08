@@ -99,7 +99,6 @@ export default function MainLayout({ children }) {
             {children}
           </CountriesContext.Provider>
         </FilterDataContext.Provider>
-        {/* {children} */}
       </main>
     </main>
   );

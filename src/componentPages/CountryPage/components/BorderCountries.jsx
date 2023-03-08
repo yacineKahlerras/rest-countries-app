@@ -1,6 +1,6 @@
 import baseUrl from "@/utils/data/baseUrl";
+import Link from "next/link";
 import React from "react";
-import { Link } from "react-router-dom";
 
 export default function BorderCountries(props) {
   const { countries, borderSigns } = props;
@@ -26,7 +26,7 @@ export default function BorderCountries(props) {
         {neighbours.map((border, index) => {
           return (
             <Link
-              to={`${baseUrl}${border.linkName}`}
+              href={`${baseUrl}${border.linkName}`}
               key={index}
               className="bg-White dark:bg-DarkBlue p-[.3em] px-[1.3em] rounded-sm drop-shadow-lg "
             >

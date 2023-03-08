@@ -1,8 +1,8 @@
-import React, { memo, useEffect, useState } from "react";
-import { useLoaderData, useOutletContext } from "react-router-dom";
+import CountriesContext from "@/utils/contexts/CountriesContext";
+import React, { memo, useContext, useEffect, useState } from "react";
 import BorderCountries from "./components/BorderCountries";
 import Loading from "./components/Loading";
-import LeafeletMap from "./components/LeafeletMap";
+// import LeafeletMap from "./components/LeafeletMap";
 import getCountryDataInfo from "./methods/getCountryData";
 import { labels1, labels2 } from "./data/infoLabels";
 import BackBtn from "./components/BackBtn";
@@ -14,9 +14,12 @@ export async function CountryPageLoader({ params }) {
   return params.countryName;
 }
 
-function CountryPage() {
-  const countryName = useLoaderData().replace(/_+/g, " ").toLowerCase();
-  const [countries] = useOutletContext();
+function CountryPage(props) {
+  const { countryPathName } = props;
+  const countryName = countryPathName.replace(/_+/g, " ").toLowerCase();
+  // const countryName = useLoaderData().replace(/_+/g, " ").toLowerCase();
+  // const [countries] = useOutletContext();
+  const countries = useContext(CountriesContext);
   const [country, setCountry] = useState();
   let countryData = getCountryDataInfo(country);
   const [isLoading, setIsLoading] = useState(false);
@@ -37,7 +40,7 @@ function CountryPage() {
     setIsLoading(false);
   }, [countryName]);
 
-  window.scrollTo(0, 0);
+  // window.scrollTo(0, 0);
 
   return (
     <div className="w-[90%] max-w-md lg:max-w-6xl mx-auto capitalize py-14 relative">
@@ -58,7 +61,7 @@ function CountryPage() {
           />
         </div>
       </div>
-      {country ? <LeafeletMap latlng={country.latlng} /> : ""}
+      {/* {country ? <LeafeletMap latlng={country.latlng} /> : ""} */}
       <Loading isLoading={isLoading} />
     </div>
   );
