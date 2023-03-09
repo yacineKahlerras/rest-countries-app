@@ -26,7 +26,7 @@ export default function BorderCountries(props) {
         {neighbours.map((border, index) => {
           return (
             <Link
-              href={`${baseUrl}${border.linkName}`}
+              href={`/country/${border.linkName}`}
               key={index}
               className="bg-White dark:bg-DarkBlue p-[.3em] px-[1.3em] rounded-sm drop-shadow-lg "
             >
