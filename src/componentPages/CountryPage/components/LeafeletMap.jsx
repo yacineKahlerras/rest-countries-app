@@ -1,18 +1,20 @@
 import React, { memo } from "react";
-// import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
-// import "leaflet/dist/leaflet.css";
-// import markerIconPng from "leaflet/dist/images/marker-icon.png";
-// import { Icon } from "leaflet";
+import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
+import "leaflet/dist/leaflet.css";
+import markerIconPng from "leaflet/dist/images/marker-icon.png";
+import { Icon } from "leaflet";
 
 function LeafeletMap(props) {
   const { latlng } = props;
   const zoom = 4;
 
-  // function ChangeView({ center, zoom }) {
-  //   const map = useMap();
-  //   map.setView(center, zoom);
-  //   return null;
-  // }
+  function ChangeView({ center, zoom }) {
+    const map = useMap();
+    map.setView(center, zoom);
+    return null;
+  }
+
+  console.log(markerIconPng);
 
   return (
     <div
@@ -22,7 +24,7 @@ function LeafeletMap(props) {
       <h1 className="font-bold text-lg sm:text-2xl lg:mb-0 sm:col-span-2">
         Location
       </h1>
-      {/* <MapContainer
+      <MapContainer
         style={{ height: "100%", width: "100%", borderRadius: "0.3rem" }}
         center={latlng}
         zoom={zoom}
@@ -37,7 +39,7 @@ function LeafeletMap(props) {
           position={latlng}
           icon={
             new Icon({
-              iconUrl: markerIconPng,
+              iconUrl: markerIconPng.src,
               iconSize: [25, 41],
               iconAnchor: [12, 41],
             })
@@ -45,7 +47,7 @@ function LeafeletMap(props) {
         >
           <Popup>Cinema</Popup>
         </Marker>
-      </MapContainer> */}
+      </MapContainer>
     </div>
   );
 }

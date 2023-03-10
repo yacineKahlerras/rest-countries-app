@@ -2,13 +2,16 @@ import CountriesContext from "@/utils/contexts/CountriesContext";
 import React, { memo, useContext, useEffect, useState } from "react";
 import BorderCountries from "./components/BorderCountries";
 import Loading from "./components/Loading";
-import LeafeletMap from "./components/LeafeletMap";
 import getCountryDataInfo from "./methods/getCountryData";
 import { labels1, labels2 } from "./data/infoLabels";
 import BackBtn from "./components/BackBtn";
 import CountryImage from "./components/CountryImage";
 import CountryInfo from "./components/CountryInfo";
 import CountryTitle from "./components/CountryTitle";
+import dynamic from "next/dynamic";
+const LeafeletMap = dynamic(() => import("./components/LeafeletMap"), {
+  ssr: false,
+});
 
 function CountryPage(props) {
   const { countryPathName } = props;
@@ -17,11 +20,6 @@ function CountryPage(props) {
   const [country, setCountry] = useState();
   let countryData = getCountryDataInfo(country);
   const [isLoading, setIsLoading] = useState(false);
-  let countryMap = "";
-
-  useEffect(() => {
-    countryMap = <LeafeletMap latlng={country.latlng} />;
-  });
 
   function getCountryData() {
     for (let i = 0; i < countries.length; i++) {
@@ -62,7 +60,7 @@ function CountryPage(props) {
           />
         </div>
       </div>
-      {country ? countryMap : ""}
+      {country ? <LeafeletMap latlng={country.latlng} /> : ""}
       <Loading isLoading={isLoading} />
     </div>
   );
