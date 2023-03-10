@@ -14,8 +14,6 @@ function LeafeletMap(props) {
     return null;
   }
 
-  console.log(markerIconPng);
-
   return (
     <div
       className="w-full max-w-3xl h-[20rem] relative mx-auto mt-8 flex flex-col gap-3"
