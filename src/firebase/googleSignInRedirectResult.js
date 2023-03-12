@@ -6,7 +6,7 @@ export default function getRedirect(setUser, setIsLoadingUser) {
   getRedirectResult(auth)
     .then((result) => {
       const user = result.user;
-      setUser(user);
+      if (user) setUser(user);
       setIsLoadingUser(false);
     })
     .catch((error) => {

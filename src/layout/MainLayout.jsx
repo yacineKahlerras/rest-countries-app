@@ -29,6 +29,17 @@ export default function MainLayout({ children }) {
     }
   }, [user]);
 
+  // listens to authentification state change and updates the user state
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setIsLoadingUser(false);
+      setUser(currentUser);
+    });
+    return () => {
+      unsubscribe();
+    };
+  }, []);
+
   // getting google sign in redirect result
   useEffect(() => {
     getRedirect(setUser, setIsLoadingUser);
