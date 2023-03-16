@@ -1,12 +1,14 @@
-import axios from "axios";
+import { doc, getDoc } from "firebase/firestore";
+import { db } from "@/firebase/firebase-config.js";
 
 export default async function getUserData(uid, setFavoriteCountries) {
-  axios
-    .post("/api/favorites", {
-      uid,
-    })
-    .then((res) => {
-      const data = res.data;
-      setFavoriteCountries(data);
-    });
+  const docRef = doc(db, "users", uid);
+  const docSnap = await getDoc(docRef);
+
+  if (docSnap.exists()) {
+    setFavoriteCountries(docSnap.data());
+  } else {
+    console.log("No such document!");
+    setFavoriteCountries(null);
+  }
 }
