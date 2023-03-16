@@ -2,7 +2,6 @@ import React, { memo, useContext, useState } from "react";
 import sunIcon from "@/assets/images/darkTheme/brightness-low-fill.svg";
 import moonIcon from "@/assets/images/darkTheme/moon-fill.svg";
 import NavBarData from "@/utils/contexts/DarkThemeContext";
-import baseUrl from "@/utils/data/baseUrl";
 import NavSignIn from "./components/NavSignIn";
 import Sidemenu from "../sidemenu/Sidemenu";
 import Link from "next/link";
@@ -28,7 +27,7 @@ function Nav() {
 
   return (
     <>
-      <nav className="bg-White dark:bg-DarkBlue drop-shadow-md md:relative ">
+      <nav className="bg-White dark:bg-DarkBlue drop-shadow-md md:relative md:z-20">
         <div className="max-w-7xl mx-auto flex justify-between items-center px-4 py-6">
           <Link href="/">
             <h1 className=" font-semibold text-lg md:text-xl ">
