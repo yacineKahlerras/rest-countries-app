@@ -2,13 +2,13 @@ import React, { useContext } from "react";
 import NavBarData from "@/utils/contexts/DarkThemeContext";
 import NavLoading from "@/components/Nav/components/NavLoading";
 import SignInButton from "@/components/Nav/components/SignInButton";
-import baseUrl from "@/utils/data/baseUrl";
 import SignOut from "@/firebase/googleSignOut";
+import { useRouter } from "next/router";
 
 export default function NavSignInSidemenu(props) {
   const { isLoadingUser, user } = useContext(NavBarData);
   const { toggleSidemenu } = props;
-  // const navigate = useNavigate();
+  const router = useRouter();
 
   const signInButton = <SignInButton />;
 
@@ -16,7 +16,7 @@ export default function NavSignInSidemenu(props) {
 
   function goFavorites() {
     toggleSidemenu();
-    // navigate(`${baseUrl}Favorites`);
+    router.push("/favorites");
   }
 
   const userProfileElement = (
