@@ -32,7 +32,7 @@ to get additional information on it like location and its neighbouring countries
 
 ### What I Learned
 
-- learning more about the direstore security rules to limit access to other user files
+- firestore security rules to limit access to other user documents
 - different ways to enhance performance with memoization and finding solutions to reduce
   renders as much as possible, also used lazy loading to make the app a little less heavy
   and doesnt' download all the images at once
