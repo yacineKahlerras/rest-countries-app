@@ -15,7 +15,7 @@ export default function NavProfile(props) {
         p-3 px-5 whitespace-nowrap rounded-md flex flex-col gap-1 text-left ${dropDownVisible}`}
       >
         <li className="hover:font-medium">
-          <Link href={`${baseUrl}Favorites`}>Favorites</Link>
+          <Link href={`/favorites`}>Favorites</Link>
         </li>
         <button className="hover:font-medium" onClick={SignOut}>
           Sign Out

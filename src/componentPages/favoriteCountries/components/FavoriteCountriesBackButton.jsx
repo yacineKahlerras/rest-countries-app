@@ -1,12 +1,13 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
 import backIcon from "@/assets/images/buttons/arrow-left.svg";
+import Image from "next/image";
+import { useRouter } from "next/router";
 
 export default function FavoriteCountriesBackButton() {
-  const navigate = useNavigate();
+  const router = useRouter();
 
   function BackPage() {
-    navigate(-1);
+    router.back();
   }
 
   return (
@@ -15,7 +16,7 @@ export default function FavoriteCountriesBackButton() {
     items-center text-sm drop-shadow-md ml-20 "
       onClick={BackPage}
     >
-      <img className="dark:invert" src={backIcon} alt="back button" />
+      <Image className="dark:invert" src={backIcon} alt="back button" />
       Back
     </button>
   );

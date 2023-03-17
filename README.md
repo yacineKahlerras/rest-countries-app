@@ -16,7 +16,7 @@ to get additional information on it like location and its neighbouring countries
 
 ### Links
 
-- [Live Site URL](https://yacinekahlerras.github.io/rest-countries-app/)
+- [Live Site URL](https://rest-countries-app-alpha.vercel.app/)
 
 ### Built with
 
@@ -32,7 +32,7 @@ to get additional information on it like location and its neighbouring countries
 
 ### What I Learned
 
-- firestore security rules to limit access to other user documents
+- firestore security rules to limit reads and writes access to other user documents
 - different ways to enhance performance with memoization and finding solutions to reduce
   renders as much as possible, also used lazy loading to make the app a little less heavy
   and doesnt' download all the images at once
